@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_background_2"
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LAYOUT CHOOSE"
+        android:textSize="@dimen/Mn_TV_TextSize_Title"
+        android:textColor="@color/Mn_TV_Title"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/image_background_2"
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
+
+    <ImageView
+        android:layout_marginTop="@dimen/padding"
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/tvset" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffff99"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_bookmark"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/bookmark_false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtWord"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textSize="25dp"
+                    android:text="Word"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtSpell"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:text="Spelling"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btn_showContext"
+                     android:layout_width="25dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/up_arrow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_soundSpeak"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/sound_speak" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

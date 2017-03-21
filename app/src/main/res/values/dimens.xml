@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="Mn_Linear_MarginBottom">10dp</dimen>
+    <dimen name="Mn_Linear_Height">74dp</dimen>
+
+    <!-- Mn_ config for Menu Activity -->
+    <dimen name="Mn_Relatevice_Width">180dp</dimen>
+    <dimen name="Mn_Relatevice_Height">70dp</dimen>
+
+    <dimen name="Mn_marginTop_R1">95dp</dimen> <!-- MarginTop Relatevice R1 -->
+    <dimen name="Mn_marginTop_R3_5_7">15dp</dimen> <!-- MarginTop Relatevice R3,R5,R7 -->
+
+    <dimen name="Mn_TV_width">140dp</dimen> <!-- Text View Width -->
+    <dimen name="Mn_TV_height">100dp</dimen> <!-- Text View Height -->
+
+    <dimen name="Mn_BTN_Width">75dp</dimen> <!-- Button Width-->
+    <dimen name="Mn_BTN_Height">70dp</dimen> <!-- Button Height-->
+
+
+    <dimen name="Mn_TV_TextSize">20dp</dimen> <!-- Text Size  -->
+    <dimen name="Mn_TV_TextSize_Title">40dp</dimen> <!-- Text Size  -->
+
+
+    <!--Se_config for second menu activity-->
+    <dimen name="Se_Relatevice_Height">70dp</dimen>
+
+    <!---->
+    <dimen name="padding">15dp</dimen>
+
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LearnVocabulary</string>
+    <string name="txt_travel">Travel</string>
+    <string name="txt_animal">Animal</string>
+    <string name="txt_fruit">Fruit</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_people">People</string>
+    <string name="txt_sport">Sport</string>
+    <string name="txt_vegetable">Vegetable</string>
+    <string name="txt_food">Food</string>
+
+    <string name="txt_learnEnglish">LEARN ENGLISH</string>
+
+    <string name="txt_unknown"></string> <!-- this it not config -->
+</resources>

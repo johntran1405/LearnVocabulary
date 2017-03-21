@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_background_5"
+    android:orientation="vertical"
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/tv_learnenglish"
+            android:gravity="center"
+            android:text="@string/txt_learnEnglish"
+            android:textColor="@color/Mn_TV_Title"
+            android:textSize="@dimen/Mn_TV_TextSize_Title"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="3"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Mn_Linear_Height"
+            android:layout_marginBottom="@dimen/Mn_Linear_MarginBottom"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center">
+
+            <RelativeLayout
+                android:id="@+id/R1"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_home"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_home"
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/home"
+                     />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/R2"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_people"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true" />
+                <Button
+
+                android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                android:layout_height="match_parent"
+                android:background="@drawable/people"
+                android:id="@+id/btn_people"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Mn_Linear_Height"
+            android:layout_marginBottom="@dimen/Mn_Linear_MarginBottom"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center">
+
+            <RelativeLayout
+                android:id="@+id/R3"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_animal"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_animal"
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/animal" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/R4"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_vegetable"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    />
+                <Button
+
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/vegetable"
+                    android:id="@+id/btn_vegetable"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Mn_Linear_Height"
+            android:layout_marginBottom="@dimen/Mn_Linear_MarginBottom"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center">
+
+            <RelativeLayout
+                android:id="@+id/R5"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_travel"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_travel"
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/air_travel" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/R6"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_sport"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    />
+                <Button
+
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sport"
+                    android:id="@+id/btn_sport"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Mn_Linear_Height"
+            android:layout_marginBottom="@dimen/Mn_Linear_MarginBottom"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center">
+
+            <RelativeLayout
+                android:id="@+id/R7"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_food"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_food"
+                    android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/home" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/R8"
+                android:layout_width="@dimen/Mn_Relatevice_Width"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="@dimen/Mn_TV_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/Mn_TV_opacity"
+                    android:gravity="center"
+                    android:text="@string/txt_fruit"
+                    android:textColor="@color/Mn_TV"
+                    android:textSize="@dimen/Mn_TV_TextSize"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    />
+                <Button
+
+                android:layout_width="@dimen/Mn_BTN_Width"
+                    android:onClick="onTouch"
+                android:layout_height="match_parent"
+                android:background="@drawable/fruit"
+                android:id="@+id/btn_fruit"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
+</LinearLayout>
