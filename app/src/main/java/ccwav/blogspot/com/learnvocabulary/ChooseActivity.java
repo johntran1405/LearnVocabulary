@@ -7,7 +7,6 @@ import android.widget.Button;
 
 public class ChooseActivity extends AppCompatActivity {
 
-   // @Override
     Button btnHome;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,6 +15,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     //@Override
+
+
     private Button btnHome,btnPeople,btnFruit,btnAnimal,btnSport,btnTravel,btnVegetable,btnFood;
 //    RelativeLayout R1, R2, R3, R4, R5, R6, R7, R8;
     private Animation scale1,scale2,scale3,scale4,scale5,scale6,scale7,scale8;

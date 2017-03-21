@@ -16,4 +16,6 @@ public class SpeechActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
     }
+
+
 }

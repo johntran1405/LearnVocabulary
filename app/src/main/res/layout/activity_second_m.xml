@@ -7,7 +7,8 @@
     android:background="@drawable/second_menu_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity"
+    >
 
 
     <RelativeLayout

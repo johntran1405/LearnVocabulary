@@ -6,6 +6,7 @@ package ccwav.blogspot.com.learnvocabulary.Common;
 
 public class Common {
     public enum Categories {
+
         HOME,
         PEOPLE,
         ANIMAL,

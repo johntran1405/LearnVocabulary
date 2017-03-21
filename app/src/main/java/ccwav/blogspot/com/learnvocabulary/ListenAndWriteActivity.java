@@ -9,6 +9,7 @@ public class ListenAndWriteActivity extends AppCompatActivity {
 
    // @Override
     Button btnHome;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenwrite_layout_m);

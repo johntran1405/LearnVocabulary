@@ -93,6 +93,8 @@ public class MyDatabase extends SQLiteOpenHelper{
 
         }
 
+
+
         try{
             cursor = db.rawQuery(String.format("SELECT * FROM Categories_Model"),null);
             if(cursor == null){

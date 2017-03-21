@@ -25,6 +25,7 @@ public class VocabularyActivity extends AppCompatActivity {
     Button btnSoundSpeak, btnBookmark,btnShowContext;
     ImageView imageView;
     TextView txtWord,txtSpelling;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocabulary_layout_m);
