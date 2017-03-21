@@ -62,6 +62,7 @@ public class MyDatabase extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
     }
+
     //This function will be get all topic from Categories Model
     public List<Categories_Model> getCategories(String mode){
         List<Categories_Model> listCategories = new ArrayList<>();
