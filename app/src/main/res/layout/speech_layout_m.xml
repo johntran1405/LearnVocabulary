@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -10,44 +10,60 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_marginTop="80dp"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/NewWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:id="@+id/NewWord"
-            android:textColor="#fff"
             android:text="New Word"
+            android:textColor="#fff"
             android:textSize="25dp" />
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imBtn_Speech"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/speech_icon" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imBtn_Speech"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/speech_icon" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@+id/imBtn_Speech"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/wordRecord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:id="@+id/wordRecord"
-            android:textColor="#fff"
             android:text="The word record to here"
+            android:textColor="#fff"
             android:textSize="25dp" />
 
         <TextView
@@ -60,4 +76,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

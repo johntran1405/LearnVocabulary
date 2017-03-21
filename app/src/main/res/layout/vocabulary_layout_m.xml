@@ -4,15 +4,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/image_background_2"
     tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
 
     <ImageView
         android:layout_marginTop="@dimen/padding"
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/tvset" />
 
