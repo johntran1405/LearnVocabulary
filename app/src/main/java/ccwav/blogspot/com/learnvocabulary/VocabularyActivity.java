@@ -13,13 +13,13 @@ import java.util.List;
 
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
-import ccwav.blogspot.com.learnvocabulary.Model.Skill_Model;
+import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
 public class VocabularyActivity extends AppCompatActivity {
 
     MyDatabase myDatabase;
     List<Categories_Model> categories_models = new ArrayList<>();
-    List<Skill_Model> topic_models = new ArrayList<>();
+    List<Words_Model> topic_models = new ArrayList<>();
 
    // @Override
     Button btnSoundSpeak, btnBookmark,btnShowContext;

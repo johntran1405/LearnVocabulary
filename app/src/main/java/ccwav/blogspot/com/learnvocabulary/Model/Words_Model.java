@@ -4,7 +4,7 @@ package ccwav.blogspot.com.learnvocabulary.Model;
  * Created by John on 3/20/2017.
  */
 
-public class Skill_Model {
+public class Words_Model {
     private int wordID;
     private int Categories_ID;
     private String English;
@@ -14,7 +14,7 @@ public class Skill_Model {
     private String Context;
 
 
-    public Skill_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context) {
+    public Words_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context) {
         this.wordID = wordID;
         Categories_ID = categories_ID;
         English = english;

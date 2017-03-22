@@ -1,74 +1,152 @@
 package ccwav.blogspot.com.learnvocabulary.Database;
 
 import android.content.Context;
-import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by John on 3/18/2017.
  */
 
 public class MyDatabase extends SQLiteOpenHelper{
-    private static String DB_NAME ="dbVocabulary.db";
-    private static String DB_PATH_SUFFIX = "";
-    private static String DB_TABLE="Categories";
-    private static String DB_TABLE2="Words";
-    private SQLiteDatabase database=null;
-    private Context mContext = null;
+    public String DB_PATH = "//data//data//%s//databases//";
+    // đường dẫn nơi chứa database
+    private static String DB_NAME = "dbVocabulary.db";
+    public SQLiteDatabase database;
+    private final Context mContext;
 
-
-    public MyDatabase(Context context) {
-        super(context, DB_NAME, null, 1);
-        DB_PATH_SUFFIX = context.getApplicationInfo().dataDir + "/databases/";
-        this.mContext = context;
+    public MyDatabase(Context con) {
+        super(con, DB_NAME, null, 1);
+        DB_PATH = String.format(DB_PATH, con.getPackageName());
+        this.mContext = con;
     }
 
-
-
-    public List<Categories_Model> getCategory()
-    {
-        List<Categories_Model> listCategory = new ArrayList<Categories_Model>();
-        String query= "SELECT * FROM Categories";
-        SQLiteDatabase db= this.getReadableDatabase();
-        try {
-            Cursor cursor= db.rawQuery(query,null);
-            if(cursor.moveToFirst())
-            {
-                do {
-                    int categori_Id = cursor.getInt(0);
-                    String categori_Name = cursor.getString(1);
-                    String categori_Icon = cursor.getString(2);
-                    Categories_Model category = new Categories_Model(categori_Id,categori_Name,categori_Icon);
-                    listCategory.add(category);
-                }while (cursor.moveToNext());
-                cursor.close();
+    /**
+     * copy database from assets to the device if not existed
+     *
+     * @return true if not exist and create database success
+     * @throws IOException
+     */
+    public boolean isCreatedDatabase() throws IOException {
+        boolean result = true;
+        if (!checkExistDataBase()) {
+            this.getReadableDatabase();
+            try {
+                copyDataBase();
+                result = false;
+            } catch (Exception ex) {
+                ex.toString();
             }
-
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
         }
 
-
-        return listCategory;
+        return result;
     }
 
+    /**
+     * check whether database exist on the device?
+     *
+     * @return true if existed
+     */
+    private boolean checkExistDataBase() {
 
+        try {
+            String myPath = DB_PATH + DB_NAME;
+            File fileDB = new File(myPath);
 
+            if (fileDB.exists()) {
+                return true;
+            } else
+                return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * copy database from assets folder to the device
+     *
+     * @throws IOException
+     */
+    private void copyDataBase() throws IOException {
+        InputStream myInput = mContext.getAssets().open(DB_NAME);
+        OutputStream myOutput = new FileOutputStream(DB_PATH + DB_NAME);
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = myInput.read(buffer)) > 0) {
+            myOutput.write(buffer, 0, length);
+        }
+
+        myOutput.flush();
+        myOutput.close();
+        myInput.close();
+    }
+
+    /**
+     * delete database file
+     *
+     * @return
+     */
+    public boolean deleteDatabase() {
+        File file = new File(DB_PATH + DB_NAME);
+        if (file != null && file.exists()) {
+            return file.delete();
+        }
+        return false;
+    }
+
+    /**
+     * open database
+     *
+     * @throws SQLException
+     */
+    public void openDataBase() throws SQLException {
+        database = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null,
+                SQLiteDatabase.OPEN_READWRITE);
+    }
+
+    @Override
+    public synchronized void close() {
+        if (database != null)
+            database.close();
+        super.close();
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // do nothing
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // do nothing
     }
+
+    public int deleteData_From_Table(String tbName) {
+
+        int result = 0;
+        try {
+            openDataBase();
+            database.beginTransaction();
+            result = database.delete(tbName, null, null);
+            if (result >= 0) {
+                database.setTransactionSuccessful();
+            }
+        } catch (Exception e) {
+            database.endTransaction();
+            close();
+        } finally {
+            database.endTransaction();
+            close();
+        }
+
+        return result;
+    }
+
 }

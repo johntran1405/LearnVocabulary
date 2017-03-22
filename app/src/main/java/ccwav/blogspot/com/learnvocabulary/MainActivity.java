@@ -4,18 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ccwav.blogspot.com.learnvocabulary.Database.CategorySQLite;
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
+import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
+import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,51 +31,64 @@ public class MainActivity extends AppCompatActivity {
     private final int TIME_DELAY_SCALE_BTN = 700;  // time delay for topic  button
     private final int TIME_DELAY_SCALE_TV = 10;     // time delay textview learnEnglish
     private TextView tv_learnEnglish;
-    MyDatabase db;
+    CategorySQLite db;
+    WordsSQLite wordsdb;
     List<Categories_Model> listcate= new ArrayList<>();
+    List<Words_Model> listwords= new ArrayList<>();
     int index=0,cate;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db= new MyDatabase(this);
+        createDB();
+        db= new CategorySQLite(this);
+        wordsdb= new WordsSQLite(this);
+        listwords=wordsdb.getAllWords();
         listcate = db.getCategory();
         cate=listcate.size();
         //hide actionbar
         getSupportActionBar().hide();
-
         addControl();
         addEvent();
 
 
 
     }
+    private void createDB() {
+// khởi tạo database
+        MyDatabase sql = new MyDatabase(this);
+        try {
+            sql.isCreatedDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void addControl() {
-        int ImageId1=this.getResources().getIdentifier(listcate.get(0).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId2=this.getResources().getIdentifier(listcate.get(1).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId3=this.getResources().getIdentifier(listcate.get(2).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId4=this.getResources().getIdentifier(listcate.get(3).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId5=this.getResources().getIdentifier(listcate.get(4).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId6=this.getResources().getIdentifier(listcate.get(5).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId7=this.getResources().getIdentifier(listcate.get(6).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        int ImageId8=this.getResources().getIdentifier(listcate.get(7).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
-        Log.d("hinh", String.valueOf(ImageId2));
+//        int ImageId1=this.getResources().getIdentifier(listcate.get(0).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId2=this.getResources().getIdentifier(listcate.get(1).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId3=this.getResources().getIdentifier(listcate.get(2).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId4=this.getResources().getIdentifier(listcate.get(3).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId5=this.getResources().getIdentifier(listcate.get(4).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId6=this.getResources().getIdentifier(listcate.get(5).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId7=this.getResources().getIdentifier(listcate.get(6).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        int ImageId8=this.getResources().getIdentifier(listcate.get(7).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+//        Log.d("hinh", String.valueOf(ImageId2));
         btnHome = (Button) findViewById(R.id.btn_home);
-        btnHome.setBackgroundResource(ImageId1);
+        //btnHome.setBackgroundResource(ImageId1);
         btnPeople = (Button) findViewById(R.id.btn_people);
-        btnPeople.setBackgroundResource(ImageId2);
+        //btnPeople.setBackgroundResource(ImageId2);
         btnAnimal = (Button) findViewById(R.id.btn_animal);
-        btnAnimal.setBackgroundResource(ImageId3);
+        //btnAnimal.setBackgroundResource(ImageId3);
         btnFruit = (Button) findViewById(R.id.btn_fruit);
-        btnFruit.setBackgroundResource(ImageId4);
+        //btnFruit.setBackgroundResource(ImageId4);
         btnSport = (Button) findViewById(R.id.btn_sport);
-        btnSport.setBackgroundResource(ImageId5);
+        //btnSport.setBackgroundResource(ImageId5);
         btnTravel = (Button) findViewById(R.id.btn_travel);
-        btnTravel.setBackgroundResource(ImageId6);
+        //btnTravel.setBackgroundResource(ImageId6);
         btnVegetable = (Button) findViewById(R.id.btn_vegetable);
-        btnVegetable.setBackgroundResource(ImageId7);
+        //btnVegetable.setBackgroundResource(ImageId7);
         btnFood = (Button) findViewById(R.id.btn_food);
-        btnFood.setBackgroundResource(ImageId8);
+        //btnFood.setBackgroundResource(ImageId8);
 
 
       //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
