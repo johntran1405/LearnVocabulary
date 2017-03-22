@@ -1,16 +1,21 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
+import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,11 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private final int TIME_DELAY_SCALE_BTN = 700;  // time delay for topic  button
     private final int TIME_DELAY_SCALE_TV = 10;     // time delay textview learnEnglish
     private TextView tv_learnEnglish;
-
+    MyDatabase db;
+    List<Categories_Model> listcate= new ArrayList<>();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        db= new MyDatabase(this);
+        listcate = db.getCategory();
         //hide actionbar
         getSupportActionBar().hide();
 
