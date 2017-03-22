@@ -30,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv_learnEnglish;
     MyDatabase db;
     List<Categories_Model> listcate= new ArrayList<>();
+    int index=0,cate;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db= new MyDatabase(this);
         listcate = db.getCategory();
+        cate=listcate.size();
         //hide actionbar
         getSupportActionBar().hide();
 
@@ -46,14 +48,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addControl() {
+        int ImageId1=this.getResources().getIdentifier(listcate.get(0).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId2=this.getResources().getIdentifier(listcate.get(1).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId3=this.getResources().getIdentifier(listcate.get(2).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId4=this.getResources().getIdentifier(listcate.get(3).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId5=this.getResources().getIdentifier(listcate.get(4).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId6=this.getResources().getIdentifier(listcate.get(5).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId7=this.getResources().getIdentifier(listcate.get(6).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        int ImageId8=this.getResources().getIdentifier(listcate.get(7).getCategori_Icon().toLowerCase(),"drawable",getPackageName());
+        Log.d("hinh", String.valueOf(ImageId2));
         btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setBackgroundResource(ImageId1);
         btnPeople = (Button) findViewById(R.id.btn_people);
+        btnPeople.setBackgroundResource(ImageId2);
         btnAnimal = (Button) findViewById(R.id.btn_animal);
+        btnAnimal.setBackgroundResource(ImageId3);
         btnFruit = (Button) findViewById(R.id.btn_fruit);
+        btnFruit.setBackgroundResource(ImageId4);
         btnSport = (Button) findViewById(R.id.btn_sport);
+        btnSport.setBackgroundResource(ImageId5);
         btnTravel = (Button) findViewById(R.id.btn_travel);
+        btnTravel.setBackgroundResource(ImageId6);
         btnVegetable = (Button) findViewById(R.id.btn_vegetable);
+        btnVegetable.setBackgroundResource(ImageId7);
         btnFood = (Button) findViewById(R.id.btn_food);
+        btnFood.setBackgroundResource(ImageId8);
 
 
       //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
