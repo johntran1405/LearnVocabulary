@@ -56,10 +56,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txthome"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_home"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold" />
@@ -81,10 +82,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtpeople"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_people"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold"
@@ -118,10 +120,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtanimal"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_animal"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold" />
@@ -141,10 +144,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtvegetable"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_vegetable"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold"
@@ -179,10 +183,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txttravel"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_travel"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold" />
@@ -203,10 +208,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtsport"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_sport"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold"
@@ -240,10 +246,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtfood"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_food"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold" />
@@ -263,10 +270,11 @@
 
                 <TextView
                     android:layout_width="@dimen/Mn_TV_width"
+                    android:id="@+id/txtfruit"
                     android:layout_height="match_parent"
                     android:background="@color/Mn_TV_opacity"
                     android:gravity="center"
-                    android:text="@string/txt_fruit"
+                    android:text=""
                     android:textColor="@color/Mn_TV"
                     android:textSize="@dimen/Mn_TV_TextSize"
                     android:textStyle="bold"
