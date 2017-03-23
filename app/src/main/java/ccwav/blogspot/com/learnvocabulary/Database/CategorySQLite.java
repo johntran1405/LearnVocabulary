@@ -17,7 +17,7 @@ public class CategorySQLite extends MyDatabase {
         super(con);
     }
 
-    public ArrayList<Categories_Model> getCategory() {
+    public ArrayList<Categories_Model> getAllCategory() {
         ArrayList<Categories_Model> listcate = new ArrayList<Categories_Model>();
         try {
             openDataBase();
@@ -32,7 +32,9 @@ public class CategorySQLite extends MyDatabase {
         } finally {
             close();
         }
-//        System.out.println("id: "+listcate.get(6).getCategories_ID()+" Name: "+listcate.get(6).getCategori_Name()+" Icon: "+listcate.get(6).getCategori_Icon());
+        System.out.println("id: "+listcate.get(2).getCategori_ID()
+                +" Name: "+listcate.get(2).getCategori_Name()
+                +" Icon: "+listcate.get(2).getCategori_Icon());
         return listcate;
     }
 

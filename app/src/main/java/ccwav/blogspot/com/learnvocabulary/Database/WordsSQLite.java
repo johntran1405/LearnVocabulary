@@ -31,12 +31,12 @@ public class WordsSQLite extends MyDatabase {
         } finally {
             close();
         }
-        System.out.println("id: "+listwords.get(1).getWordID()
-                +" Cate: "+listwords.get(1).getCategories_ID()
-                +" EN: "+listwords.get(1).getEnglish()
-                +" VN: "+listwords.get(1).getVietnamese()
-                +" SPe: "+listwords.get(1).getSpeech()
-                +" IM: "+listwords.get(1).getImage());
+//        System.out.println("id: "+listwords.get(1).getWordID()
+//                +" Cate: "+listwords.get(1).getCategories_ID()
+//                +" EN: "+listwords.get(1).getEnglish()
+//                +" VN: "+listwords.get(1).getVietnamese()
+//                +" SPe: "+listwords.get(1).getSpeech()
+//                +" IM: "+listwords.get(1).getImage());
         return listwords;
     }
 }

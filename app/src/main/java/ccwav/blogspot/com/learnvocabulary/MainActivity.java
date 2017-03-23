@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private final int TIME_DELAY_SCALE_BTN = 700;  // time delay for topic  button
     private final int TIME_DELAY_SCALE_TV = 10;     // time delay textview learnEnglish
     private TextView tv_learnEnglish;
-    CategorySQLite db;
+    CategorySQLite catedb;
     WordsSQLite wordsdb;
     List<Categories_Model> listcate= new ArrayList<>();
     List<Words_Model> listwords= new ArrayList<>();
@@ -40,12 +40,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createDB();
-        db= new CategorySQLite(this);
+        catedb= new CategorySQLite(this);
         wordsdb= new WordsSQLite(this);
         listwords=wordsdb.getAllWords();
-        listcate = db.getCategory();
-        cate=listcate.size();
-        //hide actionbar
+        listcate = catedb.getAllCategory();
         getSupportActionBar().hide();
         addControl();
         addEvent();
