@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         btnTravel = (Button) findViewById(R.id.btn_travel);
         btnTravel.setBackground(getImage(listcate.get(2).getCategori_Icon()));
         txttravel= (TextView) findViewById(R.id.txttravel);
-        txttravel.setText(listcate.get(3).getCategori_Name());
+        txttravel.setText(listcate.get(2).getCategori_Name());
 
 
         btnVegetable = (Button) findViewById(R.id.btn_vegetable);
@@ -145,15 +145,16 @@ public class MainActivity extends AppCompatActivity {
 
     public Drawable getImage(String nameimg)
     {
+//        String name = nameimg.replace(".png","");
         int img = getResources().getIdentifier(nameimg, "drawable",getApplicationContext().getPackageName());
         Log.d("Hinh","TenHinh"+ img);
         Drawable dr;
-//        if(img!=0) {
+       if(img!=0) {
             dr = getApplicationContext().getResources().getDrawable(img);
-//        }else
-//        {
-//            dr = getApplicationContext().getResources().getDrawable(R.drawable.home);
-//        }
+        }else
+        {
+            dr = getApplicationContext().getResources().getDrawable(R.drawable.home);
+        }
         return dr;
     }
 

@@ -20,7 +20,7 @@ public class WordsSQLite extends MyDatabase {
         ArrayList<Words_Model> listwords = new ArrayList<Words_Model>();
         try {
             openDataBase();
-            Cursor cs = database.rawQuery("select * from Words", null);
+            Cursor cs = database.rawQuery("select * from Word", null);
             Words_Model words_model;
             while (cs.moveToNext()) {
                 words_model = new Words_Model(cs.getInt(0),cs.getInt(1),cs.getString(2), cs.getString(3),cs.getString(4), cs.getString(5), cs.getString(6));
