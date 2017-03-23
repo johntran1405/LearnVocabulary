@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         wordsdb= new WordsSQLite(this);
         listwords=wordsdb.getAllWords();
         listcate = catedb.getAllCategory();
-        getSupportActionBar().hide();
+
         addControl();
         addEvent();
 

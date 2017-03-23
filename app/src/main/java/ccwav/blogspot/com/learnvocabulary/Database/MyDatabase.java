@@ -22,10 +22,10 @@ public class MyDatabase extends SQLiteOpenHelper{
     public SQLiteDatabase database;
     private final Context mContext;
 
-    public MyDatabase(Context con) {
-        super(con, DB_NAME, null, 1);
-        DB_PATH = String.format(DB_PATH, con.getPackageName());
-        this.mContext = con;
+    public MyDatabase(Context context) {
+        super(context, DB_NAME, null, 1);
+        DB_PATH = String.format(DB_PATH, context.getPackageName());
+        this.mContext = context;
     }
 
     /**

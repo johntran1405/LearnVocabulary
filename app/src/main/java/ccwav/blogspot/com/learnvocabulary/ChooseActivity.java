@@ -12,8 +12,6 @@ public class ChooseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_layout_m);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
 
     }

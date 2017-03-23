@@ -14,7 +14,5 @@ public class ListenAndChooseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenchoose_layout_m);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
     }
 }

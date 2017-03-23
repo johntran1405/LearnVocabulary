@@ -30,8 +30,6 @@ public class SpeechActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         addControl();
         addEvent();

@@ -14,8 +14,6 @@ public class ListenAndWriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenwrite_layout_m);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
 
     }
