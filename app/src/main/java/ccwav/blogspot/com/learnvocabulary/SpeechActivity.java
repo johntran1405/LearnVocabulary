@@ -4,17 +4,19 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
+import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
 public class SpeechActivity extends AppCompatActivity {
 
@@ -24,12 +26,20 @@ public class SpeechActivity extends AppCompatActivity {
     TextView txt_wordRecord, // text view show up the word when user speech to micro
             txt_newWord; // text view show up random new word from database
     private final int REQ_CODE_SPEECH_INPUT = 3000;
-
+    WordsSQLite wordsSQLite;
+    Bundle bundle;
+    int idcate;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
-
+        Intent getIntent=getIntent();
+        bundle=getIntent.getBundleExtra("ID");
+        idcate=bundle.getInt("Id");
+        Log.d("IDCATE","id: "+idcate);
+        List<Words_Model> listword= new ArrayList<>();
+        wordsSQLite= new WordsSQLite(this);
+        listword=wordsSQLite.getAllWordsbyCategori(idcate);
 
         addControl();
         addEvent();
