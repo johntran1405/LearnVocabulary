@@ -13,6 +13,8 @@ public class Words_Model {
     private String Image;
     private String Context;
 
+    public Words_Model() {
+    }
 
     public Words_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context) {
         this.wordID = wordID;
