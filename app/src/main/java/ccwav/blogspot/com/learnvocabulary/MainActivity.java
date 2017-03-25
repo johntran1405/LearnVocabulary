@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     List<Categories_Model> listcate= new ArrayList<>();
     List<Words_Model> listwords= new ArrayList<>();
     int index=0,cate;
+    Bundle bundle = new Bundle();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -123,22 +124,6 @@ public class MainActivity extends AppCompatActivity {
         scale1 = AnimationUtils.loadAnimation(this,R.anim.scale);
         //Animation for all topic button
         scale2 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale3 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale4 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale5 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale6 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale7 = AnimationUtils.loadAnimation(this,R.anim.scale);
-//        scale8 = AnimationUtils.loadAnimation(this,R.anim.scale);
-
-//
-//        R1 = (RelativeLayout) findViewById(R.id.R1); // R = RelativeLayout,
-//        R2 = (RelativeLayout) findViewById(R.id.R2);
-//        R3 = (RelativeLayout) findViewById(R.id.R3);
-//        R4 = (RelativeLayout) findViewById(R.id.R4);
-//        R5 = (RelativeLayout) findViewById(R.id.R5);
-//        R6 = (RelativeLayout) findViewById(R.id.R6);
-//        R7 = (RelativeLayout) findViewById(R.id.R7);
-//        R8 = (RelativeLayout) findViewById(R.id.R8);
 
         tv_learnEnglish = (TextView) findViewById(R.id.tv_learnenglish);
 
@@ -193,36 +178,60 @@ public class MainActivity extends AppCompatActivity {
         if (v.getId() == R.id.R1 || v.getId() == R.id.btn_home) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idhome=listcate.get(0).getCategori_ID();
+            bundle.putInt("Id",idhome);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
 
         }else if (v.getId() == R.id.R3 || v.getId() == R.id.btn_people) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idPeople=listcate.get(4).getCategori_ID();
+            bundle.putInt("Id",idPeople);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R5 || v.getId() == R.id.btn_fruit) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idfruit=listcate.get(7).getCategori_ID();
+            bundle.putInt("Id",idfruit);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R7 || v.getId() == R.id.btn_animal) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idanimal=listcate.get(1).getCategori_ID();
+            bundle.putInt("Id",idanimal);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         }
         else if (v.getId() == R.id.R2 || v.getId() == R.id.btn_sport) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idsport=listcate.get(6).getCategori_ID();
+            bundle.putInt("Id",idsport);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R4 || v.getId() == R.id.btn_travel) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idtravel=listcate.get(2).getCategori_ID();
+            bundle.putInt("Id",idtravel);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R6 || v.getId() == R.id.btn_vegetable) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idveget=listcate.get(5).getCategori_ID();
+            bundle.putInt("Id",idveget);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R8 || v.getId() == R.id.btn_food ) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            int idfood=listcate.get(3).getCategori_ID();
+            bundle.putInt("Id",idfood);
+            intent.putExtra("ID",bundle);
             startActivity(intent);
         }
     }
