@@ -1,10 +1,10 @@
 package ccwav.blogspot.com.learnvocabulary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +14,7 @@ import java.util.List;
 
 import ccwav.blogspot.com.learnvocabulary.Adapter.CustomVocabularyAdapter;
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
+import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
@@ -30,12 +31,20 @@ public class VocabularyActivity extends AppCompatActivity {
 
     ViewPager viewPager;
     CustomVocabularyAdapter vocabularyAdapter;
-
+    WordsSQLite wordsSQLite;
+    Bundle bundle;
+    int idcate;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocabulary_layout_m);
        // getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
-
+        Intent getIntent=getIntent();
+        bundle=getIntent.getBundleExtra("IDCate");
+        idcate=bundle.getInt("id");
+        Log.d("IDCATE","id: "+idcate);
+        List<Words_Model> listword= new ArrayList<>();
+        wordsSQLite= new WordsSQLite(this);
+        listword=wordsSQLite.getAllWordsbyCategori(idcate);
         addControl();
         addEvent();
 

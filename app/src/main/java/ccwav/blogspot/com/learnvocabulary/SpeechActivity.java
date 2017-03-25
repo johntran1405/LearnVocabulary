@@ -34,8 +34,8 @@ public class SpeechActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
         Intent getIntent=getIntent();
-        bundle=getIntent.getBundleExtra("ID");
-        idcate=bundle.getInt("Id");
+        bundle=getIntent.getBundleExtra("IDCate");
+        idcate=bundle.getInt("id");
         Log.d("IDCATE","id: "+idcate);
         List<Words_Model> listword= new ArrayList<>();
         wordsSQLite= new WordsSQLite(this);

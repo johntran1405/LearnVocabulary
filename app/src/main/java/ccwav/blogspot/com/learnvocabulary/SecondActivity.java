@@ -10,8 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
-
 public class SecondActivity extends AppCompatActivity {
 
     // @Override
@@ -20,7 +18,6 @@ public class SecondActivity extends AppCompatActivity {
     private final int Time = 500; // time delay circle
     private Animation rotale1;  // get animation
 
-    MyDatabase myDatabase;
     Bundle bundle;
     int idcate;
 
@@ -29,10 +26,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_m);
-//        Intent getIntent=getIntent();
-//        bundle=getIntent.getBundleExtra("ID");
-//        idcate=bundle.getInt("Id");
-//        Log.d("IDCATE","id: "+idcate);
+        Intent getIntent=getIntent();
+        bundle=getIntent.getBundleExtra("ID");
+        idcate=bundle.getInt("Id");
 
         addControl();
         addEvent();
@@ -75,23 +71,32 @@ public class SecondActivity extends AppCompatActivity {
         if (v.getId() == R.id.btn_vocabulary) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(getApplicationContext(), VocabularyActivity.class);
-            //intent.putExtra("Data",null);
+            bundle.putInt("id",idcate);
+            intent.putExtra("IDCate",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_speech) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(SecondActivity.this, SpeechActivity.class);
+            bundle.putInt("id",idcate);
+            intent.putExtra("IDCate",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_choose) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(SecondActivity.this, ChooseActivity.class);
+            bundle.putInt("id",idcate);
+            intent.putExtra("IDCate",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_listen_write) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(SecondActivity.this, ListenAndWriteActivity.class);
+            bundle.putInt("id",idcate);
+            intent.putExtra("IDCate",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_listen_choose) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(SecondActivity.this, ListenAndChooseActivity.class);
+            bundle.putInt("id",idcate);
+            intent.putExtra("IDCate",bundle);
             startActivity(intent);
         }
     }
