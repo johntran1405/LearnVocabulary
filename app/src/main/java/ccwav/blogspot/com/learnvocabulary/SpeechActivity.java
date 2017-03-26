@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
@@ -25,11 +26,11 @@ public class SpeechActivity extends AppCompatActivity {
     ImageButton IbtnMicro; // Image Button Micro
     TextView txt_wordRecord, // text view show up the word when user speech to micro
             txt_newWord; // text view show up random new word from database
-    private final int REQ_CODE_SPEECH_INPUT = 3000;
+    private final int REQ_CODE_SPEECH_INPUT = 1;
     WordsSQLite wordsSQLite;
     Bundle bundle;
     int idcate;
-
+    List<Words_Model> listword= new ArrayList<>();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
@@ -37,7 +38,7 @@ public class SpeechActivity extends AppCompatActivity {
         bundle=getIntent.getBundleExtra("IDCate");
         idcate=bundle.getInt("id");
         Log.d("IDCATE","id: "+idcate);
-        List<Words_Model> listword= new ArrayList<>();
+
         wordsSQLite= new WordsSQLite(this);
         listword=wordsSQLite.getAllWordsbyCategori(idcate);
         Log.d("Danhsach","arr: "+listword);
@@ -61,16 +62,19 @@ public class SpeechActivity extends AppCompatActivity {
                 SpeechInput();
             }
         });
+        getNewWord();
+
     }
-    private void SpeechInput(){
+    public void SpeechInput(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-                getString(R.string.speech_prompt));
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,"en-US");
+//                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+//        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+//                getString(R.string.speech_prompt));
         try{
             startActivityForResult(intent,REQ_CODE_SPEECH_INPUT);
+//            getNewWord();
         }catch (ActivityNotFoundException a){
             Toast.makeText(getApplicationContext(),
                     getString(R.string.speech_not_supported),
@@ -85,14 +89,34 @@ public class SpeechActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data){
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txt_wordRecord.setText(result.get(0));
-                }
+                    if(txt_wordRecord.getText().equals(txt_newWord.getText())){
+
+//                            txt_newWord.setText(listword.get(getNewWord()));
+                            txt_wordRecord.setText("");
+
+                        Toast.makeText(getApplicationContext(),"True"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        txt_newWord.setText("");
+                        txt_wordRecord.getText();
+                          Toast.makeText(getApplicationContext(),"False"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
+
+                    }
+
+
+                    }
+                break;
             }
         }
     }
+    public String getNewWord(){
+        for(int i = 0; i<listword.size();i++){
+            txt_newWord.setText(listword.get(i).getEnglish());
+            }
+             //  txt_wordRecord.getText();
+        return txt_newWord.toString();
+    }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main,menu);
-//        return true;
-//    }
+
+
 }
