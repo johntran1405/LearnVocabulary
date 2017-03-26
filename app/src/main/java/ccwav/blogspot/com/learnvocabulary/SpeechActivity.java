@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -37,11 +36,9 @@ public class SpeechActivity extends AppCompatActivity {
         Intent getIntent=getIntent();
         bundle=getIntent.getBundleExtra("IDCate");
         idcate=bundle.getInt("id");
-        Log.d("IDCATE","id: "+idcate);
 
         wordsSQLite= new WordsSQLite(this);
         listword=wordsSQLite.getAllWordsbyCategori(idcate);
-        Log.d("Danhsach","arr: "+listword);
 
         addControl();
         addEvent();
