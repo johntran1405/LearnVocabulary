@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         wordsdb= new WordsSQLite(this);
         listwords=wordsdb.getAllWordsbyCategori(3);
         listcate = catedb.getAllCategory();
-       // Log.d("Danhsach:","ten:"+listwords.get(2).getWordID()+"a: "+listwords.get(2).getEnglish()+"b: "+listwords.get(2).getVietnamese()+"c:"+listwords.get(2).getSpeech());
+        Log.d("Danhsach:","ten:"+listwords.get(2).getWordID()+"a: "+listwords.get(2).getEnglish()+"b: "+listwords.get(2).getVietnamese());
 
         addControl();
         addEvent();
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         if (v.getId() == R.id.R1 || v.getId() == R.id.btn_home) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idhome=listwords.get(0).getCategories_ID();
+            int idhome=listcate.get(0).getCategori_ID();
             bundle.putInt("Id",idhome);
             intent.putExtra("ID",bundle);
             startActivity(intent);
@@ -186,21 +186,21 @@ public class MainActivity extends AppCompatActivity {
         }else if (v.getId() == R.id.R3 || v.getId() == R.id.btn_people) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idPeople=listwords.get(4).getCategories_ID();
+            int idPeople=listcate.get(4).getCategori_ID();
             bundle.putInt("Id",idPeople);
             intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R5 || v.getId() == R.id.btn_fruit) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idfruit=listwords.get(7).getCategories_ID();
+            int idfruit=listcate.get(7).getCategori_ID();
             bundle.putInt("Id",idfruit);
             intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R7 || v.getId() == R.id.btn_animal) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idanimal=listwords.get(1).getCategories_ID();
+            int idanimal=listcate.get(1).getCategori_ID();
             bundle.putInt("Id",idanimal);
             intent.putExtra("ID",bundle);
             startActivity(intent);
@@ -208,28 +208,28 @@ public class MainActivity extends AppCompatActivity {
         else if (v.getId() == R.id.R2 || v.getId() == R.id.btn_sport) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idsport=listwords.get(6).getCategories_ID();
+            int idsport=listcate.get(6).getCategori_ID();
             bundle.putInt("Id",idsport);
             intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R4 || v.getId() == R.id.btn_travel) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idtravel=listwords.get(2).getCategories_ID();
+            int idtravel=listcate.get(2).getCategori_ID();
             bundle.putInt("Id",idtravel);
             intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R6 || v.getId() == R.id.btn_vegetable) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idveget=listwords.get(5).getCategories_ID();
+            int idveget=listcate.get(5).getCategori_ID();
             bundle.putInt("Id",idveget);
             intent.putExtra("ID",bundle);
             startActivity(intent);
         } else if (v.getId() == R.id.R8 || v.getId() == R.id.btn_food ) {
             v.startAnimation(anim_home);
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idfood=listwords.get(3).getCategories_ID();
+            int idfood=listcate.get(3).getCategori_ID();
             bundle.putInt("Id",idfood);
             intent.putExtra("ID",bundle);
             startActivity(intent);

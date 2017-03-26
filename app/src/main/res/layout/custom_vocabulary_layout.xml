@@ -9,12 +9,12 @@
     >
 
     <ImageView
-        android:layout_marginTop="@dimen/padding"
         android:id="@+id/imageView"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:layout_gravity="center"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/padding"
         android:background="@drawable/tvset" />
 
 

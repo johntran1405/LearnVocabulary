@@ -40,6 +40,7 @@ public class SpeechActivity extends AppCompatActivity {
         List<Words_Model> listword= new ArrayList<>();
         wordsSQLite= new WordsSQLite(this);
         listword=wordsSQLite.getAllWordsbyCategori(idcate);
+        Log.d("Danhsach","arr: "+listword);
 
         addControl();
         addEvent();
