@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
-public class VocabularyActivity extends AppCompatActivity {
+public class VocabularyActivity extends AppCompatActivity implements View.OnClickListener{
 
     MyDatabase myDatabase;
     List<Categories_Model> categories_models = new ArrayList<>();
@@ -70,26 +71,30 @@ public class VocabularyActivity extends AppCompatActivity {
     }
     private void addEvent() {
 
-//        btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        btnBookmark.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//        btnShowContext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btnShowContext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }
