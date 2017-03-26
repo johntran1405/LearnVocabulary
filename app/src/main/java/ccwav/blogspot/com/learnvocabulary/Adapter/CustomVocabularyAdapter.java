@@ -46,15 +46,15 @@ public class CustomVocabularyAdapter extends PagerAdapter {
 
         //
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-        TextView txtNewWord = (TextView) view.findViewById(R.id.txtWord);
-        TextView txtSpell = (TextView) view.findViewById(R.id.txtSpell);
-        Button btnBookmark = (Button) view.findViewById(R.id.btn_bookmark);
-        Button btnSpeak = (Button) view.findViewById(R.id.btn_soundSpeak);
-        Button btnhowContext = (Button) view.findViewById(R.id.btn_showContext);
+//        TextView txtNewWord = (TextView) view.findViewById(R.id.txtWord);
+//        TextView txtSpell = (TextView) view.findViewById(R.id.txtSpell);
+//        Button btnBookmark = (Button) view.findViewById(R.id.btn_bookmark);
+//        Button btnSpeak = (Button) view.findViewById(R.id.btn_soundSpeak);
+//        Button btnhowContext = (Button) view.findViewById(R.id.btn_showContext);
 
         //
         imageView.setImageResource(image_resoure[position]);
-        txtNewWord.setText("tao lao"+position);
+//        txtNewWord.setText("tao lao"+position);
         container.addView(view);
 
         return view;
