@@ -9,9 +9,6 @@
     <string name="txt_vegetable">Vegetable</string>
     <string name="txt_food">Food</string>
 
-    <string name="txtvietnamese">Vietnamese</string>
-    <string name="txtcontent">Content</string>
-
     <string name="txt_learnEnglish">LEARN ENGLISH</string>
 
     <string name="speech_prompt">Say something&#8230;</string> // speech layout
