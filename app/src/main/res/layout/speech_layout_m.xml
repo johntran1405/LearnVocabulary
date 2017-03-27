@@ -71,7 +71,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/tap_on_mic"
+            android:id="@+id/txtMessage"
             android:textSize="20dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:visibility="invisible"
+            android:id="@+id/btnNext"/>
 
     </LinearLayout>
 
