@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,12 +17,20 @@ import java.io.OutputStream;
  * Created by John on 3/18/2017.
  */
 
+
 public class MyDatabase extends SQLiteOpenHelper{
     public String DB_PATH = "//data//data//%s//databases//";
     // đường dẫn nơi chứa database
     private static String DB_NAME = "dbVocabulary.db";
     public SQLiteDatabase database;
     private final Context mContext;
+
+    public static final String TABLE_NAME = "favorite";
+    public static final String COLUMN_ENGLISH="english";
+    public static final String COLUMN_VIETNAMESE="vietnamese";
+    public static final String COLUMN_IMAGE = "image";
+    private static final String DATABASE_CREATE = "create table " + TABLE_NAME + " ( " + BaseColumns._ID + " integer primary key autoincrement, " + COLUMN_ENGLISH + " text not null,"+ COLUMN_VIETNAMESE +" text not null," + COLUMN_IMAGE + " text not null);";
+
 
     public MyDatabase(Context context) {
         super(context, DB_NAME, null, 1);
@@ -121,11 +131,17 @@ public class MyDatabase extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // do nothing
+        db.execSQL(DATABASE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // do nothing
+        Log.w(MyDatabase.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 
     public int deleteData_From_Table(String tbName) {
