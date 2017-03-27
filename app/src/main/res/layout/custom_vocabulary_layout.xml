@@ -77,12 +77,53 @@
                     android:text="Spelling"
                     android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_showContext"
-                    android:layout_width="25dp"
-                    android:layout_height="12dp"
-                    android:background="@drawable/up_arrow"
-                    android:layout_margin="5dp" />
+                <LinearLayout
+                    android:id="@+id/transitions_container"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btn_showContext"
+                        android:layout_height="12dp"
+                        android:background="@drawable/up_arrow"
+                        android:layout_margin="5dp"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:text="@string/txtvietnamese"
+                        android:textColor="@color/text"
+                        android:textSize="25dp"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtVietnamese"
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center_horizontal"
+                    />
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:text="@string/txtcontent"
+                                android:textColor="@color/text"
+                                android:textSize="25dp"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/txtContent"
+                                android:layout_gravity="fill_vertical|fill_horizontal" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
 
             </LinearLayout>
 
