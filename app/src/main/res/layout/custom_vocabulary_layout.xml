@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffff99"
+            android:background="@drawable/hinhnen"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal">
@@ -45,30 +45,35 @@
 
                 <Button
                     android:id="@+id/btn_bookmark"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/bookmark_false" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bookmark3"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.5"
+                android:layout_weight="1.12"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtWord"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:gravity="center"
-                    android:textSize="25dp"
+                    android:textColor="@color/text"
                     android:text="Word"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp" />
                 <TextView
                     android:id="@+id/txtSpell"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:gravity="center"
                     android:textSize="20dp"
+                    android:textColor="@color/text"
                     android:text="Spelling"
                     android:layout_height="wrap_content" />
 
@@ -76,7 +81,8 @@
                     android:id="@+id/btn_showContext"
                     android:layout_width="25dp"
                     android:layout_height="12dp"
-                    android:background="@drawable/up_arrow" />
+                    android:background="@drawable/up_arrow"
+                    android:layout_margin="5dp" />
 
             </LinearLayout>
 
@@ -89,16 +95,17 @@
 
                 <Button
                     android:id="@+id/btn_soundSpeak"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/sound_speak" />
+                    android:layout_width="50dp"
+                    android:background="@drawable/sound"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="25dp" />
             </LinearLayout>
 
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>
