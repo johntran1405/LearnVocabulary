@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,7 +34,8 @@ public class SpeechActivity extends AppCompatActivity {
     Bundle bundle;
     int idcate;
     List<Words_Model> listword= new ArrayList<>();
-    int sizearr= listword.size();
+    int sizearr = 0;
+    int i=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
@@ -43,11 +45,8 @@ public class SpeechActivity extends AppCompatActivity {
 
         wordsSQLite= new WordsSQLite(this);
         listword=wordsSQLite.getAllWordsbyCategori(idcate);
-
         addControl();
         addEvent();
-
-
     }
 
     private void addControl() {
@@ -57,7 +56,6 @@ public class SpeechActivity extends AppCompatActivity {
         btnNext = (Button) findViewById(R.id.btnNext);
         txt_Message = (TextView) findViewById(R.id.txtMessage);
     }
-
     private void addEvent() {
         IbtnMicro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,17 +65,20 @@ public class SpeechActivity extends AppCompatActivity {
         });
 //        getNewWord();
         txt_newWord.setText(listword.get(sizearr).getEnglish());
+        sizearr=listword.size();
+//        Log.d("aaaa","id: "+sizearr);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Toast.makeText(getApplicationContext(),"True",Toast.LENGTH_LONG).show();
-                txt_newWord.setText(listword.get(sizearr).getEnglish());
+//                Toast.makeText(getApplicationContext(),"True",Toast.LENGTH_LONG).show();
+                i++;
+                getword(i);
+                Log.d("aaaa","id: "+sizearr);
                 txt_wordRecord.setText("");
                 btnNext.setVisibility(View.INVISIBLE);
+
             }
         });
-
-
     }
     public void SpeechInput(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -104,30 +105,26 @@ public class SpeechActivity extends AppCompatActivity {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txt_wordRecord.setText(result.get(0));
                     if(txt_wordRecord.getText().equals(txt_newWord.getText())){
-
                        // Toast.makeText(getApplicationContext(),"True"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
                         btnNext.setVisibility(View.VISIBLE);
                         txt_Message.setText("Bạn Giỏi Quá !");
                     }
                     else {
                         txt_wordRecord.getText();
-                          //Toast.makeText(getApplicationContext(),"False"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
-                        txt_Message.setText("Bạn Làm Sai Rồi !");
+//                          //Toast.makeText(getApplicationContext(),"False"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
+                        txt_Message.setText("Bạn Đọc Sai Rồi !");
                     }
-
-
                     }
                 break;
             }
         }
     }
-//    public String getNewWord(){
-//        for(int i = 0; i<listword.size();i++){
-//            txt_newWord.setText(listword.get(i).getEnglish());
-//            }
-//             //  txt_wordRecord.getText();
-//        return txt_newWord.toString();
- //   }
+    public String getword(int f){
+        String text = listword.get(f).getEnglish();
+        txt_newWord.setText(text);
+        return  txt_newWord.toString();
+    }
+
 
 
 
