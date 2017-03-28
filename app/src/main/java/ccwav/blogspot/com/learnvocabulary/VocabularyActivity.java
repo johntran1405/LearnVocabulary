@@ -1,7 +1,9 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
@@ -17,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +52,7 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
     Bundle bundle;
     int idcate;
 
+    Dialog dialogContext;
     ImageFragmentPagerAdapter imageFragmentPagerAdapter;
     static List<Words_Model> listword= new ArrayList<>();
     static int NUM_ITEMS =0;
@@ -106,6 +110,7 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
             final TextView txtSpeel=(TextView) swipeView.findViewById(R.id.txtSpell);
             Button btnSoundSpeak = (Button) swipeView.findViewById(R.id.btn_soundSpeak);
             Button bntFavorite = (Button) swipeView.findViewById(R.id.btn_bookmark);
+            Button btnShowContext = (Button) swipeView.findViewById(R.id.btn_showContext);
 
             finalMTts= new TextToSpeech(this.getActivity(),this);
 
@@ -114,6 +119,17 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
             final String imageFileName = listword.get(position).getImage();
             txtEN.setText(listword.get(position).getEnglish());
             txtSpeel.setText(listword.get(position).getSpeech());
+
+            final Dialog dialog = new Dialog(getActivity(),R.style.free_floating_dialog);
+            dialog.setContentView(R.layout.content_layout);
+
+            TextView txtMean = (TextView) dialog.findViewById(R.id.txtMean);
+            TextView txtContext = (TextView) dialog.findViewById(R.id.txtContext);
+            Button btnClose = (Button) dialog.findViewById(R.id.btnClose);
+
+            txtMean.setText(listword.get(position).getVietnamese());
+            txtContext.setText(listword.get(position).getContext());
+
 //            int imgResId = getResources().getIdentifier(String.valueOf(imageFileName), "drawable",getActivity().getPackageName());
             imageView.setBackground(getImage(imageFileName));
             btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +139,19 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
                 }
 
             });
+            btnShowContext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.show();
+                }
+            });
+            btnClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
+
             bntFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
