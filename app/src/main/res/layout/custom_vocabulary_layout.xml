@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:id="@+id/layoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/hinhnen"
+            android:background="@drawable/hinhnenv2"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal">
@@ -45,11 +45,12 @@
 
                 <Button
                     android:id="@+id/btn_bookmark"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/bookmark3"/>
+                    android:background="@drawable/bookmark3"
+                    android:layout_gravity="start"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -77,12 +78,45 @@
                     android:text="Spelling"
                     android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_showContext"
-                    android:layout_width="25dp"
-                    android:layout_height="12dp"
-                    android:background="@drawable/up_arrow"
-                    android:layout_margin="5dp" />
+                <LinearLayout
+                    android:id="@+id/layoutShow"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btn_showContext"
+                        android:background="@drawable/up_arrow"
+                        android:layout_margin="5dp"
+                        android:layout_height="20dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:text="@string/txtvietnamese"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtVietnamese" />
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:text="@string/txtcontent"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/txtContent" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -95,11 +129,12 @@
 
                 <Button
                     android:id="@+id/btn_soundSpeak"
-                    android:layout_width="50dp"
                     android:background="@drawable/sound"
-                    android:layout_height="50dp"
+                    android:layout_gravity="right"
                     android:layout_marginTop="15dp"
-                    android:layout_marginRight="25dp" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="10dp" />
             </LinearLayout>
 
 
