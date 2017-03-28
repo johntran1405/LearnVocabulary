@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ import java.util.Random;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
-public class SpeechActivity extends AppCompatActivity {
+public class SpeechActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
    // @Override
 
@@ -28,7 +29,7 @@ public class SpeechActivity extends AppCompatActivity {
     TextView txt_wordRecord, // text view show up the word when user speech to micro
             txt_newWord; // text view show up random new word from database
     TextView txt_Message; // text view hiển thị trạng thái đúng sai của từ nhập vào
-    Button btnNext;
+    Button btnNext,btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 1;
     WordsSQLite wordsSQLite;
     Bundle bundle;
@@ -36,6 +37,7 @@ public class SpeechActivity extends AppCompatActivity {
     List<Words_Model> listword= new ArrayList<>();
     int sizearr = 0;
     int i=0;
+    TextToSpeech finalMTts = null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speech_layout_m);
@@ -45,6 +47,8 @@ public class SpeechActivity extends AppCompatActivity {
 
         wordsSQLite= new WordsSQLite(this);
         listword=wordsSQLite.getAllWordsbyCategori(idcate);
+        finalMTts= new TextToSpeech(this.getApplicationContext(),this);
+
         addControl();
         addEvent();
     }
@@ -55,12 +59,20 @@ public class SpeechActivity extends AppCompatActivity {
         txt_wordRecord = (TextView) findViewById(R.id.txtwordRecord);
         btnNext = (Button) findViewById(R.id.btnNext);
         txt_Message = (TextView) findViewById(R.id.txtMessage);
+        btnSpeak = (Button) findViewById(R.id.btnSoundSpeak);
+
     }
     private void addEvent() {
         IbtnMicro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SpeechInput();
+            }
+        });
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finalMTts.speak(txt_newWord.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
             }
         });
 //        getNewWord();
@@ -82,7 +94,7 @@ public class SpeechActivity extends AppCompatActivity {
     }
     public void SpeechInput(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,"en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,"US");
 //                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 //        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 //        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
@@ -126,6 +138,24 @@ public class SpeechActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR) {
+            finalMTts.setLanguage(Locale.US);
+        } else {
+            // Initialization failed.
+            Log.e("app", "Could not initialize TextToSpeech.");
+        }
+    }
 
+    @Override
+    protected void onDestroy() {
 
+        if (finalMTts != null)
+        {
+            finalMTts.stop();
+            finalMTts.shutdown();
+        }
+        super.onDestroy();
+    }
 }
