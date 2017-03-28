@@ -1,7 +1,9 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -101,15 +103,17 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
             View swipeView = inflater.inflate(R.layout.custom_vocabulary_layout, container, false);
             ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
             final TextView txtEN=(TextView) swipeView.findViewById(R.id.txtWord);
-            TextView txtVN=(TextView) swipeView.findViewById(R.id.txtSpell);
+            final TextView txtSpeel=(TextView) swipeView.findViewById(R.id.txtSpell);
             Button btnSoundSpeak = (Button) swipeView.findViewById(R.id.btn_soundSpeak);
+            Button bntFavorite = (Button) swipeView.findViewById(R.id.btn_bookmark);
+
             finalMTts= new TextToSpeech(this.getActivity(),this);
 
             Bundle bundle = getArguments();
             final int position = bundle.getInt("position");
-            String imageFileName = listword.get(position).getImage();
+            final String imageFileName = listword.get(position).getImage();
             txtEN.setText(listword.get(position).getEnglish());
-            txtVN.setText(listword.get(position).getVietnamese());
+            txtSpeel.setText(listword.get(position).getSpeech());
 //            int imgResId = getResources().getIdentifier(String.valueOf(imageFileName), "drawable",getActivity().getPackageName());
             imageView.setBackground(getImage(imageFileName));
             btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +122,33 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
                     finalMTts.speak(txtEN.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
                 }
 
+            });
+            bntFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try
+                    {
+                        MyDatabase DBhelper = new MyDatabase(getActivity());
+                        //put DB in write mode
+                        SQLiteDatabase db = DBhelper.getWritableDatabase();
+                        //put variables
+                        ContentValues values = new ContentValues();
+                        //values.put(DatabaseHelper.COLUMN_ID, 1);
+                        values.put(MyDatabase.COLUMN_ENGLISH, txtEN.getText().toString());
+                        values.put(MyDatabase.COLUMN_VIETNAMESE, txtSpeel.getText().toString());
+                        values.put(MyDatabase.COLUMN_IMAGE,imageFileName.getBytes());
+
+                        //insert variables into DB
+                        long query = db.insert(MyDatabase.TABLE_NAME, null, values);
+                        //close DB
+                        Log.i("Table","success"+ imageFileName.getBytes());
+                        db.close();
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Error: "+e.getLocalizedMessage());
+                    }
+                }
             });
 
             return swipeView;
