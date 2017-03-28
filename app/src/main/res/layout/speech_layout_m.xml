@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_background_2"
@@ -73,14 +73,41 @@
             android:text="@string/tap_on_mic"
             android:id="@+id/txtMessage"
             android:textSize="20dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:visibility="invisible"
-            android:id="@+id/btnNext"/>
+
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/btnSoundSpeak"
+
+                android:background="@drawable/sound_speak"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:layout_gravity="right"
+                android:id="@+id/btnNext"
+                android:visibility="invisible"
+                android:layout_alignBaseline="@+id/btn_soundSpeak"
+                android:layout_alignBottom="@+id/btn_soundSpeak"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
