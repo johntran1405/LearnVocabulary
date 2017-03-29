@@ -77,9 +77,9 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
             }
         });
 //        getNewWord();
-        txt_newWord.setText(listword.get(sizearr).getEnglish());
-        sizearr=listword.size();
-//        Log.d("aaaa","id: "+sizearr);
+        txt_newWord.setText(listword.get(0).getEnglish());
+//        sizearr=listword.size();
+        Log.d("aaaa","id: "+sizearr);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,8 +140,6 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
         txt_newWord.setText(text);
         return  txt_newWord.toString();
     }
-
-
     @Override
     public void onInit(int status) {
         if (status != TextToSpeech.ERROR) {
