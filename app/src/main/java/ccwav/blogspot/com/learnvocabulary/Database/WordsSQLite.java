@@ -35,6 +35,8 @@ public class WordsSQLite extends MyDatabase {
         return listwords;
     }
 
+
+
     public ArrayList<Words_Model> getAllWordsbyCategori(int id) {
         ArrayList<Words_Model> listwords = new ArrayList<Words_Model>();
         try {

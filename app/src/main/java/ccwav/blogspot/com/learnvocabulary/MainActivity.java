@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         wordsdb= new WordsSQLite(this);
         listwords=wordsdb.getAllWordsbyCategori(3);
         listcate = catedb.getAllCategory();
-        Log.d("Danhsach:","ten:"+listwords.get(2).getWordID()+"a: "+listwords.get(2).getEnglish()+"b: "+listwords.get(2).getVietnamese());
+//        Log.d("Danhsach:","ten:"+listwords.get(2).getWordID()+"a: "+listwords.get(2).getEnglish()+"b: "+listwords.get(2).getVietnamese());
 
         addControl();
         addEvent();

@@ -2,10 +2,7 @@ package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,17 +16,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import ccwav.blogspot.com.learnvocabulary.Adapter.CustomVocabularyAdapter;
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
@@ -47,7 +41,6 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
     TextView txtWord,txtSpelling;
 
     ViewPager viewPager;
-    CustomVocabularyAdapter vocabularyAdapter;
     WordsSQLite wordsSQLite;
     Bundle bundle;
     int idcate;
@@ -157,21 +150,6 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
                 public void onClick(View view) {
                     try
                     {
-                        MyDatabase DBhelper = new MyDatabase(getActivity());
-                        //put DB in write mode
-                        SQLiteDatabase db = DBhelper.getWritableDatabase();
-                        //put variables
-                        ContentValues values = new ContentValues();
-                        //values.put(DatabaseHelper.COLUMN_ID, 1);
-                        values.put(MyDatabase.COLUMN_ENGLISH, txtEN.getText().toString());
-                        values.put(MyDatabase.COLUMN_VIETNAMESE, txtSpeel.getText().toString());
-                        values.put(MyDatabase.COLUMN_IMAGE,imageFileName.getBytes());
-
-                        //insert variables into DB
-                        long query = db.insert(MyDatabase.TABLE_NAME, null, values);
-                        //close DB
-                        Log.i("Table","success"+ imageFileName.getBytes());
-                        db.close();
                     }
                     catch(Exception e)
                     {
