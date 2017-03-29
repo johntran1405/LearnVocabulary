@@ -4,59 +4,73 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     android:background="@drawable/image_background_2"
-    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity"
-    >
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="4"
-    android:layout_margin="@dimen/padding"
-    android:orientation="vertical">
-
-    <ImageView
-
-        android:id="@+id/imageView_listenandwrite"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/sport4" />
-
-</LinearLayout>
+    android:orientation="vertical"
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:layout_weight="0.2"
-        android:background="@drawable/hinhnenv2"
-        android:gravity="center|center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/padding"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
 
-        <Button
-            android:id="@+id/btnspeak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/sound_speak" />
+            android:orientation="vertical">
 
-        <EditText
+            <ImageView
 
-            android:id="@+id/editText"
+                android:id="@+id/imageView_listenandwrite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sport4" />
 
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="50dp"
-            android:layout_weight="0.7"
-            android:background="@color/colorEdittext"
-            android:hint="Hear this word and rewrite !"
-            android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:background="@drawable/hinhnenv2"
+            android:gravity="center|center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnspeak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sound_speak" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/colorEdittext"
+                    android:hint="Hear this wo"
+                    android:textSize="30dp" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

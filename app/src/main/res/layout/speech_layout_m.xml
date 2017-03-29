@@ -65,7 +65,13 @@
             android:gravity="center"
             android:textColor="#fff"
             android:textSize="25dp" />
-
+        <TextView
+            android:id="@+id/txtMean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="25dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +109,6 @@
                 android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
-
 
     </LinearLayout>
 

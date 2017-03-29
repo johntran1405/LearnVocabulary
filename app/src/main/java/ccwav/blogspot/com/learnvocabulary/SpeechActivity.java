@@ -28,7 +28,8 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
     ImageButton IbtnMicro; // Image Button Micro
     TextView txt_wordRecord, // text view show up the word when user speech to micro
             txt_newWord; // text view show up random new word from database
-    TextView txt_Message; // text view hiển thị trạng thái đúng sai của từ nhập vào
+    TextView txt_Message, // text view hiển thị trạng thái đúng sai của từ nhập vào
+                txt_Mean; // text view show up mean that word
     Button btnNext,btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 1;
     WordsSQLite wordsSQLite;
@@ -60,6 +61,7 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
         btnNext = (Button) findViewById(R.id.btnNext);
         txt_Message = (TextView) findViewById(R.id.txtMessage);
         btnSpeak = (Button) findViewById(R.id.btnSoundSpeak);
+        txt_Mean = (TextView) findViewById(R.id.txtMean);
 
     }
     private void addEvent() {
@@ -88,17 +90,19 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
                 Log.d("aaaa","id: "+sizearr);
                 txt_wordRecord.setText("");
                 btnNext.setVisibility(View.INVISIBLE);
+                txt_Message.setText("Tap on mic to speak");
+                txt_Mean.setText("");
 
             }
         });
     }
     public void SpeechInput(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,"US");
-//                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-//        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-//                getString(R.string.speech_prompt));
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
         try{
             startActivityForResult(intent,REQ_CODE_SPEECH_INPUT);
 //            getNewWord();
@@ -116,10 +120,11 @@ public class SpeechActivity extends AppCompatActivity implements TextToSpeech.On
                 if (resultCode == RESULT_OK && null != data){
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txt_wordRecord.setText(result.get(0));
-                    if(txt_wordRecord.getText().equals(txt_newWord.getText())){
+                    if(txt_wordRecord.getText().toString().equalsIgnoreCase(txt_newWord.getText().toString())){
                        // Toast.makeText(getApplicationContext(),"True"+txt_wordRecord.getText(),Toast.LENGTH_LONG).show();
                         btnNext.setVisibility(View.VISIBLE);
                         txt_Message.setText("Bạn Giỏi Quá !");
+                        txt_Mean.setText(listword.get(i).getVietnamese());
                     }
                     else {
                         txt_wordRecord.getText();
