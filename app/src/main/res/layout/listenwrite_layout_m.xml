@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@drawable/image_background_2"
     tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity"
     >
 
@@ -17,43 +17,46 @@
     android:orientation="vertical">
 
     <ImageView
+
+        android:id="@+id/imageView_listenandwrite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/image_demo"/>
+        android:background="@drawable/sport4" />
 
 </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/hinhnenv2"
         android:gravity="center|center_horizontal"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/btnspeak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/sound_speak" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+        <EditText
 
-            <EditText
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="#900000"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+            android:id="@+id/editText"
 
-
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="0.7"
+            android:background="@color/colorEdittext"
+            android:hint="Hear this word and rewrite !"
+            android:textSize="30dp" />
     </LinearLayout>
 </LinearLayout>
