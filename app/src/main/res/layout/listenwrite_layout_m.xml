@@ -78,7 +78,7 @@
             android:id="@+id/btnphatam"
             android:layout_width="173dp"
             android:layout_height="40dp"
-            android:text="Phát âm"
+            android:text="Nghe lại"
             android:background="@drawable/bg_next"/>
         <Button
             android:id="@+id/btn_tiep"
