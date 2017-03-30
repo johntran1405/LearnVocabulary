@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,21 +22,22 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.IDButton;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
-public class ListenAndWriteActivity extends AppCompatActivity {
+public class ListenAndWriteActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
     private static final int CHECK_ANWSER = 0;
-    private static final int GAME_OVER = 1;
-    private int heart;
-    private int point;
+//    private static final int GAME_OVER = 1;
+//    private int heart;
+//    private int point;
     private Handler handler;
-    private Button btntiep;
-    private TextView txtHeart;
-    private TextView txtPoint;
+    private Button btntiep,btnphatam;
+//    private TextView txtHeart,txtPoint,;
+    private TextView txtread;
     private ImageView imgPicture;
     private LinearLayout lnAnwser1, lnAnwser2, lnCh1, lnCh2;
     private List<Words_Model> listQuestions;
@@ -48,7 +50,7 @@ public class ListenAndWriteActivity extends AppCompatActivity {
     WordsSQLite wordsSQLite;
     Bundle bundle;
     int idcate;
-
+    TextToSpeech finalMTts = null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenwrite_layout_m);
@@ -59,6 +61,7 @@ public class ListenAndWriteActivity extends AppCompatActivity {
         idcate=bundle.getInt("id");
         Log.d("IDW","id: "+idcate);
         wordsSQLite= new WordsSQLite(this);
+        finalMTts= new TextToSpeech(this.getApplicationContext(),this);
         initComponets();
         makeQuestion();
         handler= new Handler(){
@@ -68,41 +71,48 @@ public class ListenAndWriteActivity extends AppCompatActivity {
                 switch (msg.what) {
                     case CHECK_ANWSER:
                         if (checkAnwser()) {
-                            Toast.makeText(ListenAndWriteActivity.this, "Thiên tài !", Toast.LENGTH_SHORT).show();
-                            point += 100;
-                            txtPoint.setText(point + "");
+//                            Toast.makeText(ListenAndWriteActivity.this, "Thiên tài !", Toast.LENGTH_SHORT).show();
+//                            point += 100;
+//                            txtPoint.setText(point + "");
                             for (int i = 16; i < dapan.length() + 16; i++) {
                                 ((Button) findViewById(i)).setBackgroundResource(R.drawable.ic_tile_true);
                                 ((Button) findViewById(i)).setClickable(false);
                             }
                             btntiep.setVisibility(View.VISIBLE);
                         } else {
-                            heart--;
-                            txtHeart.setText(heart + "");
-                            if (heart <= 0) {
-                                handler.sendEmptyMessage(GAME_OVER);
-                                return;
-                            }
-                            Toast.makeText(ListenAndWriteActivity.this, "Đáp án sai !", Toast.LENGTH_SHORT).show();
+                               /* heart--;
+                                txtHeart.setText(heart + "");
+                                if (heart <= 0) {
+                                    handler.sendEmptyMessage(GAME_OVER);
+                                    return;
+                                }
+                                Toast.makeText(ListenAndWriteActivity.this, "Đáp án sai !", Toast.LENGTH_SHORT).show();*/
 
-                            for (int i = 16; i < dapan.length() + 16; i++) {
-                                ((Button) findViewById(i)).setBackgroundResource(R.drawable.ic_tile_false);
-                            }
-                            if (heart <= 0) {
-                                handler.sendEmptyMessage(GAME_OVER);
-                            }
+                                for (int i = 16; i < dapan.length() + 16; i++) {
+                                    ((Button) findViewById(i)).setBackgroundResource(R.drawable.ic_tile_false);
+                                }
+                                /*if (heart <= 0) {
+                                    handler.sendEmptyMessage(GAME_OVER);
+                                }*/
 
                         }
                         break;
-                    case GAME_OVER:
-                        Toast.makeText(ListenAndWriteActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
-                        finish();
-                        break;
-                    default:
-                        break;
+//                    case GAME_OVER:
+//                        Toast.makeText(ListenAndWriteActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+//                        finish();
+//                        break;
+//                    default:
+//                        break;
                 }
             }
         };
+
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
+            }
+        }, 2000);
 
 
     }
@@ -110,6 +120,7 @@ public class ListenAndWriteActivity extends AppCompatActivity {
     private void makeQuestion() {
         Words_Model qs = listQuestions.get(i);
         dapan = qs.getEnglish();
+        txtread.setText(dapan);
         final String imageFileName = qs.getImage();
         Log.d("anh","Tenanh"+ imageFileName);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -190,7 +201,7 @@ public class ListenAndWriteActivity extends AppCompatActivity {
         }
         imgPicture.setBackground(getImage(imageFileName));
 
-        String[] kt = {"a", "b", "c", "d", "e", "g", "h", "i", "k", "l", "m", "n", "o", "u", "q", "p", "r", "s", "t", "y", "v", "x"};
+        String[] kt = {"a", "b", "c", "d", "e","f","g", "h", "i","j","k", "l", "m", "n", "o", "u", "q", "p", "r", "s", "t", "y", "v", "x","z","w"};
         List<String> tl = new ArrayList();
 
         for (int i = 0; i < dapan.length(); i++) {
@@ -250,8 +261,8 @@ public class ListenAndWriteActivity extends AppCompatActivity {
     }
     private void initComponets() {
         listChar = new ArrayList();
-        heart = 5;
-        point = 0;
+//        heart = 5;
+//        point = 0;
         random = new Random();
 
         btntiep = (Button) findViewById(R.id.btn_tiep);
@@ -261,19 +272,27 @@ public class ListenAndWriteActivity extends AppCompatActivity {
                 newQuestion();
             }
         });
+        btnphatam= (Button) findViewById(R.id.btnphatam);
+        btnphatam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
         imgPicture = (ImageView) findViewById(R.id.img_picture);
         lnAnwser1 = (LinearLayout) findViewById(R.id.anwser1);
         lnAnwser2 = (LinearLayout) findViewById(R.id.anwser2);
         lnCh1 = (LinearLayout) findViewById(R.id.ln_3);
         lnCh2 = (LinearLayout) findViewById(R.id.ln_4);
-        txtHeart = (TextView) findViewById(R.id.txt_heart);
-        txtPoint = (TextView) findViewById(R.id.txt_point);
-
-        txtHeart.setText(heart + "");
-        txtPoint.setText(point + "");
+//        txtHeart = (TextView) findViewById(R.id.txt_heart);
+//        txtPoint = (TextView) findViewById(R.id.txt_point);
+        txtread= (TextView) findViewById(R.id.txtreadword);
+//        txtHeart.setText(heart + "");
+//        txtPoint.setText(point + "");
 
         listQuestions = new ArrayList<>();
         listQuestions=wordsSQLite.getAllWordsbyCategori(idcate);
+
         Log.d("mang","tu: "+ listQuestions);
         Collections.shuffle(listQuestions);
 
@@ -318,5 +337,25 @@ public class ListenAndWriteActivity extends AppCompatActivity {
             return true;
         } else
             return false;
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR) {
+            finalMTts.setLanguage(Locale.US);
+        } else {
+            // Initialization failed.
+            Log.e("app", "Could not initialize TextToSpeech.");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (finalMTts != null)
+        {
+            finalMTts.stop();
+            finalMTts.shutdown();
+        }
+        super.onDestroy();
     }
 }
