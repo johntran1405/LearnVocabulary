@@ -16,85 +16,128 @@
     </android.support.v4.view.ViewPager>
 
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_below="@+id/imageView"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal">-->
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="#ffff99"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/hinhnenv2"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="vertical">-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_bookmark"-->
-                    <!--android:layout_width="70dp"-->
-                    <!--android:layout_height="70dp"-->
-                    <!--android:background="@drawable/bookmark_false" />-->
-            <!--</LinearLayout>-->
+                <Button
+                    android:id="@+id/btn_bookmark"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bookmark3"
+                    android:layout_gravity="start"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+            </LinearLayout>
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="2.5"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="vertical">-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.12"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <!--<TextView-->
-                    <!--android:id="@+id/txtWord"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:gravity="center"-->
-                    <!--android:textSize="25dp"-->
-                    <!--android:text="Word"-->
-                    <!--android:layout_height="wrap_content" />-->
-                <!--<TextView-->
-                    <!--android:id="@+id/txtSpell"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:gravity="center"-->
-                    <!--android:textSize="20dp"-->
-                    <!--android:text="Spelling"-->
-                    <!--android:layout_height="wrap_content" />-->
+                <TextView
+                    android:id="@+id/txtWord"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text"
+                    android:text="Word"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp" />
+                <TextView
+                    android:id="@+id/txtSpell"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/text"
+                    android:text="Spelling"
+                    android:layout_height="wrap_content" />
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_showContext"-->
-                    <!--android:layout_width="25dp"-->
-                    <!--android:layout_height="12dp"-->
-                    <!--android:background="@drawable/up_arrow" />-->
+                <LinearLayout
+                    android:id="@+id/layoutShow"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <!--</LinearLayout>-->
+                    <Button
+                        android:id="@+id/btn_showContext"
+                        android:background="@drawable/up_arrow"
+                        android:layout_margin="5dp"
+                        android:layout_height="20dp"
+                        android:layout_width="40dp"
+                        android:layout_gravity="center"/>
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="vertical">-->
+                    <TextView
+                        android:text="@string/txtvietnamese"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtVietnamese" />
 
-                <!--<Button-->
-                    <!--android:id="@+id/btn_soundSpeak"-->
-                    <!--android:layout_width="70dp"-->
-                    <!--android:layout_height="70dp"-->
-                    <!--android:background="@drawable/sound_speak" />-->
-            <!--</LinearLayout>-->
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:text="@string/txtcontent"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/txtContent" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_soundSpeak"
+                    android:background="@drawable/sound"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="10dp" />
+            </LinearLayout>
 
 
-        <!--</LinearLayout>-->
+        </LinearLayout>
 
-    <!--</LinearLayout>-->
+    </LinearLayout>-->
 
 </LinearLayout>

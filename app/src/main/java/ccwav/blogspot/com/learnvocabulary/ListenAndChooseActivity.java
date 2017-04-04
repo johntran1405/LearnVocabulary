@@ -2,12 +2,10 @@ package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.*;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
-
-import static ccwav.blogspot.com.learnvocabulary.VocabularyActivity.listword;
 
 public class ListenAndChooseActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
@@ -73,6 +68,8 @@ public class ListenAndChooseActivity extends AppCompatActivity implements TextTo
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void addEvent() {
+        // Lay ngau nhien
+       // imageBTN3.setBackground(getResources().getDrawable(listword.get(0).getImage()));
 
 
 //        btnNext.setOnClickListener(new View.OnClickListener() {
