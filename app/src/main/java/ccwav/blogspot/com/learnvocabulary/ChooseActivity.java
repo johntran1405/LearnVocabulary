@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -22,11 +24,15 @@ public class ChooseActivity extends AppCompatActivity {
     Bundle bundle;
     int idcate;
 
-    static List<Words_Model> listword= new ArrayList<>();
+
     static int NUM_ITEMS =0;
     ImageView imageView;
     Button btnA,btnB,btnC,btnD;
-    ArrayList<String> word = new ArrayList();
+
+    ArrayList<Words_Model> listword= new ArrayList<>();
+    ArrayList<Words_Model> arrayList = new ArrayList<>();
+    TextToSpeech finalMTts = null;
+    private int RESULT_CHOSEN = -1,RESULT_FAILED = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,30 +51,7 @@ public class ChooseActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void addEvent() {
-        Random rd = new Random();
-        String img=listword.get(0).getImage();
-        imageView.setBackground(getImage(img));
-        String A=listword.get(0).getEnglish();
-        String B=listword.get(1).getEnglish();
-        String C=listword.get(2).getEnglish();
-        String D=listword.get(3).getEnglish();
-        word.add(A);
-        word.add(B);
-        word.add(C);
-        word.add(D);
-        int i;
-        String text = null;
-        for (i=0;i<word.size();i++)
-        {
-            text=word.get(rd.nextInt(word.size()));
-            word.remove(word.get(i));
-        }
-
-        btnA.setText(text);
-        btnB.setText(text);
-        btnC.setText(text);
-        btnD.setText(text);
-
+        RandomImage();
     }
 
     private void addControl() {
@@ -79,17 +62,24 @@ public class ChooseActivity extends AppCompatActivity {
         btnD= (Button) findViewById(R.id.dapan4);
 
     }
-    private Drawable getImage(String img)
-    {
-        int imgResId = getResources().getIdentifier(String.valueOf(img), "drawable",getApplicationContext().getPackageName());
-        Log.d("Hinh","TenHinh"+ imgResId);
-        Drawable dr;
-        if(imgResId!=0) {
-            dr = getApplicationContext().getResources().getDrawable(imgResId);
-        }else
-        {
-            dr = getApplicationContext().getResources().getDrawable(R.drawable.home);
+    public void RandomImage(){
+        Random random = new Random();
+
+        for(int i = 0; i< 4;i++){
+            int n = listword.size();
+            int x = random.nextInt(n);
+            arrayList.add(listword.get(x));
+            listword.remove(x);
         }
-        return dr;
+        RESULT_CHOSEN = random.nextInt(arrayList.size());
+        imageView.setBackgroundResource(getResources().getIdentifier(arrayList.get(RESULT_CHOSEN).getImage(),"drawable",getApplicationContext().getPackageName()));
+        btnA.setText(arrayList.get(0).getEnglish().toString());
+        btnB.setText(arrayList.get(1).getEnglish().toString());
+        btnC.setText(arrayList.get(2).getEnglish().toString());
+        btnD.setText(arrayList.get(3).getEnglish().toString());
+
     }
+    //Check Result
+
+
 }
