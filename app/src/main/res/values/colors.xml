@@ -8,7 +8,8 @@
     <color name="Mn_TV">#FFF</color>
     <color name="Mn_TV_opacity">#7000</color>
     <color name="colorEdittext">#7000</color>
-
+    <color name="truebutton">#00FF00</color>
+    <color name="falsebutton">#FF0000</color>
 
     <color name="background">#F4FA58</color>
 </resources>

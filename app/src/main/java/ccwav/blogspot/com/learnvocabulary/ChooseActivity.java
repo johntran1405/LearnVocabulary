@@ -2,18 +2,17 @@ package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
@@ -23,6 +22,7 @@ public class ChooseActivity extends AppCompatActivity {
     WordsSQLite wordsSQLite;
     Bundle bundle;
     int idcate;
+    int idimg,idword1,idword2,idword3,idword4;
 
 
     static int NUM_ITEMS =0;
@@ -52,34 +52,103 @@ public class ChooseActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void addEvent() {
         RandomImage();
+        btnA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(idimg==idword1)
+                {
+                    btnA.setBackgroundResource(R.drawable.colorbutton);
+                    RandomImage();
+
+
+
+                }else{
+                    btnA.setBackgroundResource(R.drawable.colorbutton);
+                }
+            }
+        });
+        btnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(idimg==idword2)
+                {
+                    btnB.setBackgroundResource(R.drawable.colorbutton);
+                    arrayList.removeAll(arrayList);
+                        RandomImage();
+
+                }else{
+                    btnB.setBackgroundResource(R.drawable.colorbutton);
+                }
+            }
+        });
+//        btnC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(idimg==idword3)
+//                {
+//                    btnC.setBackgroundResource(R.drawable.colorbutton);
+//                    arrayList.removeAll(arrayList);
+//                    RandomImage();
+//                }else{
+//                    btnC.setBackgroundResource(R.drawable.colorbutton);
+//                }
+//            }
+//        });
+//        btnD.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(idimg==idword4)
+//                {
+//                    btnD.setBackgroundResource(R.drawable.colorbutton);
+//                    arrayList.removeAll(arrayList);
+//                    RandomImage();
+//                }else{
+//                    btnD.setBackgroundResource(R.drawable.colorbutton);
+//                }
+//            }
+//        });
     }
 
     private void addControl() {
         imageView= (ImageView) findViewById(R.id.imagecate);
         btnA= (Button) findViewById(R.id.dapan1);
         btnB= (Button) findViewById(R.id.dapan2);
-        btnC= (Button) findViewById(R.id.dapan3);
-        btnD= (Button) findViewById(R.id.dapan4);
+//        btnC= (Button) findViewById(R.id.dapan3);
+//        btnD= (Button) findViewById(R.id.dapan4);
 
     }
     public void RandomImage(){
         Random random = new Random();
 
-        for(int i = 0; i< 4;i++){
-            int n = listword.size();
-            int x = random.nextInt(n);
-            arrayList.add(listword.get(x));
-            listword.remove(x);
+
+        for(int i = 0; i< 2;i++){
+
+            try {
+                int n = listword.size();
+                int x = random.nextInt(n);
+                arrayList.add(listword.get(x));
+                listword.remove(x);
+            }catch (Exception ex)
+            {
+                Toast.makeText(this,"Het ba tu",Toast.LENGTH_LONG).show();
+            }
+
         }
+        Collections.shuffle(arrayList);
         RESULT_CHOSEN = random.nextInt(arrayList.size());
         imageView.setBackgroundResource(getResources().getIdentifier(arrayList.get(RESULT_CHOSEN).getImage(),"drawable",getApplicationContext().getPackageName()));
+        idimg=arrayList.get(RESULT_CHOSEN).getWordID();
         btnA.setText(arrayList.get(0).getEnglish().toString());
+        idword1=arrayList.get(0).getWordID();
         btnB.setText(arrayList.get(1).getEnglish().toString());
-        btnC.setText(arrayList.get(2).getEnglish().toString());
-        btnD.setText(arrayList.get(3).getEnglish().toString());
+        idword2=arrayList.get(1).getWordID();
+//        btnC.setText(arrayList.get(2).getEnglish().toString());
+//        idword3=arrayList.get(2).getWordID();
+//        btnD.setText(arrayList.get(3).getEnglish().toString());
+//        idword4=arrayList.get(3).getWordID();
 
     }
-    //Check Result
+
 
 
 }
