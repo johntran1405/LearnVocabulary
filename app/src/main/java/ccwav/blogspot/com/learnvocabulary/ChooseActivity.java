@@ -40,7 +40,7 @@ public class ChooseActivity extends AppCompatActivity {
         bundle=getIntent.getBundleExtra("IDCate");
         idcate=bundle.getInt("id");
         wordsSQLite= new WordsSQLite(this);
-        listword=wordsSQLite.getAllWordsbyCategori(idcate);
+        listword=wordsSQLite.getWordsbyCategori(idcate);
 
         addControl();
         addEvent();
@@ -120,23 +120,35 @@ public class ChooseActivity extends AppCompatActivity {
     public void RandomImage(){
         Random random = new Random();
 
-
-        for(int i = 0; i< 4;i++){
+        ArrayList<Integer> l = new ArrayList<>();
+        l.add(-1);
+        int si = 4;
+        for(int i = 0; i< si;i++){
             int n = listword.size();
             int x = random.nextInt(n);
-            arrayList.add(listword.get(x));
-            listword.remove(x);
+            if(!l.contains(x)){
+                arrayList.add(listword.get(x));
+                l.add(x);
+            }else{
+                RandomImage();
+            }
+
+
         }
         Collections.shuffle(arrayList);
         RESULT_CHOSEN = random.nextInt(arrayList.size());
         imageView.setBackgroundResource(getResources().getIdentifier(arrayList.get(RESULT_CHOSEN).getImage(),"drawable",getApplicationContext().getPackageName()));
         idimg=arrayList.get(RESULT_CHOSEN).getWordID();
+
         btnA.setText(arrayList.get(0).getEnglish().toString());
         idword1=arrayList.get(0).getWordID();
+
         btnB.setText(arrayList.get(1).getEnglish().toString());
         idword2=arrayList.get(1).getWordID();
+
         btnC.setText(arrayList.get(2).getEnglish().toString());
         idword3=arrayList.get(2).getWordID();
+
         btnD.setText(arrayList.get(3).getEnglish().toString());
         idword4=arrayList.get(3).getWordID();
 
