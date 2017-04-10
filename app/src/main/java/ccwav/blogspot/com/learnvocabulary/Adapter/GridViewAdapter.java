@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 import ccwav.blogspot.com.learnvocabulary.R;
 
@@ -19,9 +19,9 @@ import ccwav.blogspot.com.learnvocabulary.R;
 public class GridViewAdapter extends BaseAdapter {
     Context context;
     String NameCategory[];
-    int ImageCategory[];
+    ArrayList ImageCategory;
 
-    public GridViewAdapter(Context context, String[] nameCategory, int[] imageCategory) {
+    public GridViewAdapter(Context context, String[] nameCategory, ArrayList imageCategory) {
         this.context = context;
         NameCategory = nameCategory;
         ImageCategory = imageCategory;
@@ -48,7 +48,8 @@ public class GridViewAdapter extends BaseAdapter {
         view = layoutInflater.inflate(R.layout.gridview_row_main,null);
 
         TextView txtNameCategory1 = (TextView) view.findViewById(R.id.txtNameCategory1);
-        ImageView ImgCategory1 = (ImageView) view.findViewById(R.id.ImgCategory1);
+        LinearLayout linearLayout= (LinearLayout) view.findViewById(R.id.Linear1);
+//        ImageView ImgCategory1 = (ImageView) view.findViewById(R.id.ImgCategory1);
 
 //        TextView txtNameCategory2 = (TextView) view.findViewById(R.id.txtNameCategory2);
 //        ImageView ImgCategory2 = (ImageView) view.findViewById(R.id.ImgCategory2);
@@ -66,7 +67,7 @@ public class GridViewAdapter extends BaseAdapter {
 //        ImageView ImgCategory6 = (ImageView) view.findViewById(R.id.ImgCategory6);
 
         txtNameCategory1.setText(NameCategory[i]);
-        ImgCategory1.setImageResource(ImageCategory[i]);
+        linearLayout.setBackgroundResource((Integer) ImageCategory.get(i));
 
 //        txtNameCategory2.setText(NameCategory[i]);
 //        ImgCategory2.setImageResource(ImageCategory[i]);
