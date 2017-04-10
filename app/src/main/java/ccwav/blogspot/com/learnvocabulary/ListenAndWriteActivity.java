@@ -308,12 +308,12 @@ public class ListenAndWriteActivity extends AppCompatActivity implements TextToS
             lnCh1.removeAllViews();
             lnCh2.removeAllViews();
             makeQuestion();
-//            new Handler().postDelayed(new Runnable(){
-//                @Override
-//                public void run() {
-//                    finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
-//                }
-//            }, 200);
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
+                }
+            }, 2000);
         } else {
             Toast.makeText(this, "Bạn đã trả lời hết câu hỏi !", Toast.LENGTH_LONG).show();
         }
