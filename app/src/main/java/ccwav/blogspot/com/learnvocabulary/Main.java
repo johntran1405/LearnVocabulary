@@ -1,4 +1,6 @@
 package ccwav.blogspot.com.learnvocabulary;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import ccwav.blogspot.com.learnvocabulary.Adapter.GridViewAdapter;
 import ccwav.blogspot.com.learnvocabulary.Database.CategorySQLite;
@@ -21,16 +24,20 @@ import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 public class Main extends AppCompatActivity {
     GridViewAdapter gridViewAdapter;
     GridView gridView;
-    ArrayList<String> name= new ArrayList<>();
-    int Image;
-    ArrayList ArrImage= new ArrayList();
+
+    int ImageCategory;
+    String NameCategory;
+
     CategorySQLite catedb;
     WordsSQLite wordsdb;
     List<Categories_Model> listcate= new ArrayList<>();
     List<Words_Model> listwords= new ArrayList<>();
-    int index=0,cate;
+
     Bundle bundle = new Bundle();
-    ArrayList<String> nameimg= new ArrayList<>();
+
+    ArrayList<Integer> ImageCategories= new ArrayList<>();
+    ArrayList<String> NameCategories= new ArrayList<>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_menu);
@@ -43,12 +50,15 @@ public class Main extends AppCompatActivity {
         int i;
         for(i=0;i<listcate.size();i++)
         {
-            nameimg.add(listcate.get(i).getCategori_Icon());
-            Image=getResources().getIdentifier(nameimg.get(i), "drawable",getApplicationContext().getPackageName());
-            ArrImage.add(Image);
-            Log.d("Mang",""+ArrImage);
 
-            gridViewAdapter = new GridViewAdapter(this,Name,ArrImage);
+            ImageCategory = getResources().getIdentifier(listcate.get(i).getCategori_Icon(), "drawable",getApplicationContext().getPackageName());
+            ImageCategories.add(ImageCategory);
+            NameCategory = listcate.get(i).getCategori_Name();
+            NameCategories.add(NameCategory);
+
+            Log.d("Mang",""+ImageCategory);
+
+            gridViewAdapter = new GridViewAdapter(this,NameCategories,ImageCategories);
         }
 
         gridView.setAdapter(gridViewAdapter);
@@ -56,7 +66,19 @@ public class Main extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),""+Name[i],Toast.LENGTH_SHORT).show();
+
+                if(view.getId() == ImageCategory){
+                    Intent intent = new Intent(Main.this, SecondActivity.class);
+                    startActivity(intent);
+                }
+
+                Object item = adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(Main.this,SecondActivity.class);
+                int idfruit=listcate.get(i).getCategori_ID();
+                bundle.putInt("Id",idfruit);
+                Log.d("Id"," :"+idfruit);
+                intent.putExtra("ID",bundle);
+                startActivity(intent);
             }
         });
 

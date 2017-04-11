@@ -44,10 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         btnSpeech = (Button) findViewById(R.id.btn_speech);
 
         rotale1 = AnimationUtils.loadAnimation(this, R.anim.rotale);
-//        rotale2 = AnimationUtils.loadAnimation(this, R.anim.rotale);
-//        rotale3 = AnimationUtils.loadAnimation(this, R.anim.rotale);
-//        rotale4 = AnimationUtils.loadAnimation(this, R.anim.rotale);
-//        rotale5 = AnimationUtils.loadAnimation(this,R.anim.rotale);
+
 
         se_R1 = (RelativeLayout) findViewById(R.id.se_R1); // R = RelativeLayout,
 

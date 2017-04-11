@@ -132,8 +132,6 @@ public class ChooseActivity extends AppCompatActivity {
             }else{
                 RandomImage();
             }
-
-
         }
         Collections.shuffle(arrayList);
         RESULT_CHOSEN = random.nextInt(arrayList.size());
