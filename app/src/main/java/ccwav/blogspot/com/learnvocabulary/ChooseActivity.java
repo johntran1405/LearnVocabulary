@@ -119,19 +119,20 @@ public class ChooseActivity extends AppCompatActivity {
     }
     public void RandomImage(){
         Random random = new Random();
-
         ArrayList<Integer> l = new ArrayList<>();
         l.add(-1);
         int si = 4;
+        int n = listword.size();
         for(int i = 0; i< si;i++){
-            int n = listword.size();
             int x = random.nextInt(n);
             if(!l.contains(x)){
                 arrayList.add(listword.get(x));
                 l.add(x);
             }else{
-                RandomImage();
+                si++;
             }
+
+
         }
         Collections.shuffle(arrayList);
         RESULT_CHOSEN = random.nextInt(arrayList.size());

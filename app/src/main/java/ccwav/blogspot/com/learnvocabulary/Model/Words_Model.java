@@ -13,15 +13,15 @@ public class Words_Model {
     private String Image;
     private String Context;
 
-//    public Words_Model(Words_Model m1){
-//        this.wordID = m1.wordID;
-//        this.Categories_ID = m1.Categories_ID;
-//        this.English = m1.English;
-//        this.Vietnamese = m1.Vietnamese;
-//        this.Speech = m1.Speech;
-//        this.Image = m1.Image;
-//        this.Context = m1.Context;
-//    }
+    public Words_Model(Words_Model m1){
+        this.wordID = m1.wordID;
+        this.Categories_ID = m1.Categories_ID;
+        this.English = m1.English;
+        this.Vietnamese = m1.Vietnamese;
+        this.Speech = m1.Speech;
+        this.Image = m1.Image;
+        this.Context = m1.Context;
+    }
 
     public Words_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context) {
         this.wordID = wordID;

@@ -3,15 +3,16 @@ package ccwav.blogspot.com.learnvocabulary;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
-public class VocabularyActivity extends FragmentActivity implements View.OnClickListener{
+public class VocabularyActivity extends AppCompatActivity implements View.OnClickListener{
 
     MyDatabase myDatabase;
     List<Categories_Model> categories_models = new ArrayList<>();
@@ -49,6 +50,7 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
     ImageFragmentPagerAdapter imageFragmentPagerAdapter;
     static List<Words_Model> listword= new ArrayList<>();
     static int NUM_ITEMS =0;
+    int idW;
 
 
 
@@ -71,9 +73,10 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
 
 
     }
-    public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
+    public class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
         public ImageFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
+
         }
 
         @Override
@@ -84,36 +87,56 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
         @Override
         public Fragment getItem(int position) {
             SwipeFragment fragment = new SwipeFragment();
-            return SwipeFragment.newInstance(position);
+            SharedPreferences prefs = getSharedPreferences("data", MODE_PRIVATE);
+            idW = prefs.getInt("idWord", 0);
+            Log.d("WWW  ",""+idW);
+            txtWord = (TextView) findViewById(R.id.txtWord);
+            txtSpelling = (TextView) findViewById(R.id.txtSpell);
+            txtWord.setText(listword.get(idW).getEnglish());
+            return fragment.newInstance(position);
         }
     }
 
-    public static class SwipeFragment extends Fragment implements TextToSpeech.OnInitListener{
+    public class SwipeFragment extends Fragment implements TextToSpeech.OnInitListener{
         TextToSpeech finalMTts = null;
 
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
 
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
             View swipeView = inflater.inflate(R.layout.custom_vocabulary_layout, container, false);
             ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
-            final TextView txtEN=(TextView) swipeView.findViewById(R.id.txtWord);
+           /* final TextView txtEN=(TextView) swipeView.findViewById(R.id.txtWord);
             final TextView txtSpeel=(TextView) swipeView.findViewById(R.id.txtSpell);
             Button btnSoundSpeak = (Button) swipeView.findViewById(R.id.btn_soundSpeak);
             Button bntFavorite = (Button) swipeView.findViewById(R.id.btn_bookmark);
-            Button btnShowContext = (Button) swipeView.findViewById(R.id.btn_showContext);
+            Button btnShowContext = (Button) swipeView.findViewById(R.id.btn_showContext);*/
 
             finalMTts= new TextToSpeech(this.getActivity(),this);
 
             Bundle bundle = getArguments();
             final int position = bundle.getInt("position");
             final String imageFileName = listword.get(position).getImage();
-            txtEN.setText(listword.get(position).getEnglish());
-            txtSpeel.setText(listword.get(position).getSpeech());
 
-            final Dialog dialog = new Dialog(getActivity(),R.style.free_floating_dialog);
+
+            SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+            editor.putInt("idWord", listword.get(position).getWordID());
+            editor.commit();
+
+
+//            Bundle bun = new Bundle();
+//            bun.putInt("idWord", listword.get(position).getWordID());
+//            Intent intent = getActivity().getIntent();
+//            intent.putExtras(bun);
+            Log.d("Wid  ",""+listword.get(position).getWordID());
+
+
+           /* txtEN.setText(listword.get(position).getEnglish());
+            txtSpeel.setText(listword.get(position).getSpeech());*/
+
+           /* final Dialog dialog = new Dialog(getActivity(),R.style.free_floating_dialog);
             dialog.setContentView(R.layout.content_layout);
 
             TextView txtMean = (TextView) dialog.findViewById(R.id.txtMean);
@@ -121,11 +144,11 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
             Button btnClose = (Button) dialog.findViewById(R.id.btnClose);
 
             txtMean.setText(listword.get(position).getVietnamese());
-            txtContext.setText(listword.get(position).getContext());
+            txtContext.setText(listword.get(position).getContext());*/
 
 //            int imgResId = getResources().getIdentifier(String.valueOf(imageFileName), "drawable",getActivity().getPackageName());
             imageView.setBackground(getImage(imageFileName));
-            btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
+           /* btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     finalMTts.speak(txtEN.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
@@ -156,15 +179,15 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
                         System.out.println("Error: "+e.getLocalizedMessage());
                     }
                 }
-            });
+            });*/
 
             return swipeView;
         }
 
-        static SwipeFragment newInstance(int position) {
+        SwipeFragment newInstance(int position) {
             SwipeFragment swipeFragment = new SwipeFragment();
             Bundle bundle = new Bundle();
-            bundle.putInt("position", position);
+            bundle.putInt("position",position);
             swipeFragment.setArguments(bundle);
             return swipeFragment;
         }
@@ -208,44 +231,38 @@ public class VocabularyActivity extends FragmentActivity implements View.OnClick
     }
 
     private void addControl() {
-//        btnSoundSpeak = (Button) findViewById(R.id.btn_soundSpeak);
-//        btnBookmark = (Button) findViewById(R.id.btn_bookmark);
-//        btnShowContext = (Button) findViewById(R.id.btn_showContext);
-//        txtWord = (TextView) findViewById(R.id.txtWord);
-//        txtSpelling = (TextView) findViewById(R.id.txtSpell);
+        btnSoundSpeak = (Button) findViewById(R.id.btn_soundSpeak);
+        btnBookmark = (Button) findViewById(R.id.btn_bookmark);
+        btnShowContext = (Button) findViewById(R.id.btn_showContext);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(imageFragmentPagerAdapter);
-//        vocabularyAdapter = new CustomVocabularyAdapter(this);
-//        viewPager.setAdapter(vocabularyAdapter);
-
-
     }
 
-//
-//    private void addEvent() {
-//
-//        btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        btnBookmark.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//        btnShowContext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//    }
+
+    private void addEvent() {
+
+        btnSoundSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btnShowContext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
 
 
     @Override
