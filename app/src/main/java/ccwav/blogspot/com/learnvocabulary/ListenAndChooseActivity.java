@@ -104,31 +104,31 @@ public class ListenAndChooseActivity extends AppCompatActivity implements TextTo
 
 
     //cách 2 để load random kết quả lên
-    public void RandomImg() {
-        ArrayList<Words_Model> temp = new ArrayList<>();
-        temp.add(new Words_Model(listword.get(0)));
-        temp.add(new Words_Model(listword.get(1)));
-        temp.add(new Words_Model(listword.get(2)));
-        temp.add(new Words_Model(listword.get(3)));
-        for (int i = 0; i < temp.size(); i++) {
-            txtNewWord.setText(temp.get(i).getEnglish());
-        }
-        Random random = new Random();
-        int position = random.nextInt(temp.size());
-
-        imageBTN1.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-        temp.remove(position);
-
-        position = random.nextInt(temp.size());
-        imageBTN2.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-        temp.remove(position);
-
-        position = random.nextInt(temp.size());
-        imageBTN3.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-        temp.remove(position);
-
-        imageBTN4.setBackgroundResource(getResources().getIdentifier(temp.get(0).getImage(), "drawable", getApplicationContext().getPackageName()));
-    }
+//    public void RandomImg() {
+//        ArrayList<Words_Model> temp = new ArrayList<>();
+//        temp.add(new Words_Model(listword.get(0)));
+//        temp.add(new Words_Model(listword.get(1)));
+//        temp.add(new Words_Model(listword.get(2)));
+//        temp.add(new Words_Model(listword.get(3)));
+//        for (int i = 0; i < temp.size(); i++) {
+//            txtNewWord.setText(temp.get(i).getEnglish());
+//        }
+//        Random random = new Random();
+//        int position = random.nextInt(temp.size());
+//
+//        imageBTN1.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
+//        temp.remove(position);
+//
+//        position = random.nextInt(temp.size());
+//        imageBTN2.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
+//        temp.remove(position);
+//
+//        position = random.nextInt(temp.size());
+//        imageBTN3.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
+//        temp.remove(position);
+//
+//        imageBTN4.setBackgroundResource(getResources().getIdentifier(temp.get(0).getImage(), "drawable", getApplicationContext().getPackageName()));
+//    }
 
     private void checkResult(int choose) {
 

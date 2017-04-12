@@ -44,14 +44,25 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = layoutInflater.inflate(R.layout.gridview_row_main,null);
 
-        TextView txtNameCategory1 = (TextView) view.findViewById(R.id.txtNameCategory1);
-        LinearLayout linearLayout= (LinearLayout) view.findViewById(R.id.Linear1);
+        ViewHolder holder;
+        if(view == null){
+            holder = new ViewHolder();
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.gridview_row_main,null);
 
-        txtNameCategory1.setText( NameCategory.get(i));
-        linearLayout.setBackgroundResource((Integer) ImageCategory.get(i));
+            holder.txtNameCategory = (TextView) view.findViewById(R.id.txtNameCategory1);
+            holder.linearLayout= (LinearLayout) view.findViewById(R.id.Linear1);
+
+
+
+            view.setTag(holder);
+        }
+        else{
+            holder = (ViewHolder) view.getTag();
+        }
+        holder.txtNameCategory.setText( NameCategory.get(i));
+        holder.linearLayout.setBackgroundResource((Integer) ImageCategory.get(i));
 
         return view;
     }
