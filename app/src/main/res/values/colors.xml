@@ -12,4 +12,5 @@
     <color name="falsebutton">#FF0000</color>
 
     <color name="background">#F4FA58</color>
+    <color name="tranferbutton">#1000</color>
 </resources>
