@@ -12,26 +12,23 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
 public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
-    WordsSQLite wordsSQLite;
-    Bundle bundle;
-    int idcate,correctAnswer,index = -1;
-    int idimg, idword1, idword2, idword3, idword4;
-
-
-    static int NUM_ITEMS = 0;
     ImageView imageView;
     Button btnA, btnB, btnC, btnD;
 
+    WordsSQLite wordsSQLite;
+    Bundle bundle;
+    private int idcate, index = -1, correctAnswer;
+
     ArrayList<Words_Model> listword;
+    ArrayList<Words_Model> curentWords;
     ArrayList<Button> arrButton;
-    ArrayList<Words_Model> currentWord;
+    TextToSpeech finalMTts = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +36,8 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
         Intent getIntent = getIntent();
         bundle = getIntent.getBundleExtra("IDCate");
         idcate = bundle.getInt("id");
-        Init();
 
+        Init();
     }
 
 
@@ -51,39 +48,42 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
 
     public void showQuestion() {
         clearUI();
-        Random random = new Random();
-        if (listword.size() >= 4) {
-
-            currentWord.clear();
+        if (listword.size() >= 4)
+        {
+            curentWords.clear();
             int position;
-            while (currentWord.size() < 4) {
-
+            Random random = new Random();
+            while (curentWords.size() < 4)
+            {
                 position = random.nextInt(listword.size());
-                Boolean check = false;
-                //check = true
-                for (int i = 0; i < currentWord.size(); i++) {
-                    if (currentWord.get(i).getWordID() == listword.get(i).getWordID()) {
-//                        listword.remove(i);
-                        check = true;
+
+                //Search in current list
+                Boolean hasInCurrent = false; //  <-- biến này kiểm tra xem từ đó đã có trong mảng chưa
+                for (int i = 0; i < curentWords.size(); i++)
+                {
+                    if (curentWords.get(i).getWordID() == listword.get(position).getWordID()) {
+                        hasInCurrent = true; // <-- kiểm tra đã có thì bật cái cờ lên và đi chỗ khác chơi
                         break;
                     }
                 }
-                if (!check) {
-                    currentWord.add(listword.get(position));
+                if (!hasInCurrent) // vấn đề ở khúc này
+                {
+                    curentWords.add(listword.get(position));
                 }
-
             }
             correctAnswer = random.nextInt(4);
-            imageView.setBackgroundResource(getResources().getIdentifier(currentWord.get(correctAnswer).getImage(),
+            imageView.setBackgroundResource(getResources().getIdentifier(curentWords.get(correctAnswer).getImage(),
                     "drawable", getApplicationContext().getPackageName()));
-            for(int i = 0;i<4 ;i++){
-                arrButton.get(i).setText(currentWord.get(i).getEnglish());
+            for (int i = 0; i < 4; i++)
+            {
+                arrButton.get(i).setText(curentWords.get(i).getEnglish());
             }
-
-        } else {
+        }
+        else
+        {
             index = -1;
             clearUI();
-            Toast.makeText(this, " đợi cập nhật thêm database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Da học hết từ", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -110,24 +110,27 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
 
     }
     private void processAnswer(int answer){
-        if(answer == correctAnswer){
+
+        if (answer == correctAnswer)
+        {
             //Remove correct answer
             for (int i = 0; i < listword.size(); i++)
             {
-                if (listword.get(i).getWordID() == currentWord.get(correctAnswer).getWordID())
+                if (listword.get(i).getWordID() == curentWords.get(correctAnswer).getWordID())
                 {
                     listword.remove(i);
                     break;
                 }
             }
         }
-        else {
+        else
+        {
             Toast.makeText(this, "Ban da tra loi sai!", Toast.LENGTH_LONG).show();
         }
         showQuestion();
     }
     private void Init() {
-        currentWord = new ArrayList<>();
+        curentWords = new ArrayList<Words_Model>();
         addControl();
         loadQuestion();
         showQuestion();
@@ -135,7 +138,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void clearUI(){
-//        imageView.setBackground(null);
+        imageView.setBackground(null);
         btnA.setText("");
         btnB.setText("");
         btnC.setText("");
@@ -144,7 +147,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void addControl() {
-        arrButton = new ArrayList<>();
+        arrButton = new ArrayList<Button>();
         imageView = (ImageView) findViewById(R.id.imagecate);
         btnA = (Button) findViewById(R.id.dapan1);
         btnA.setOnClickListener(this);
