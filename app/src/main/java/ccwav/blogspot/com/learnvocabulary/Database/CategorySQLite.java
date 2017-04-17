@@ -32,9 +32,7 @@ public class CategorySQLite extends MyDatabase {
         } finally {
             close();
         }
-        System.out.println("id: "+listcate.get(2).getCategori_ID()
-                +" Name: "+listcate.get(2).getCategori_Name()
-                +" Icon: "+listcate.get(2).getCategori_Icon());
+
         return listcate;
     }
 

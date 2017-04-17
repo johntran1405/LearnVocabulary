@@ -32,6 +32,7 @@
         <activity android:name=".ChooseActivity" />
         <activity android:name=".SpeechActivity" />
         <activity android:name=".VocabularyActivity" />
+        <activity android:name=".Nghi_Tu_Activity" />
         <activity android:name=".MainChinhActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
