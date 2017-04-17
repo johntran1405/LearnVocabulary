@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -14,13 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
 
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
-public class ListenAndChooseActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
+public class ListenAndChooseActivity extends AppCompatActivity
+        implements TextToSpeech.OnInitListener,
+        View.OnClickListener {
 
     // @Override
     ImageButton imageBTN1, imageBTN2, imageBTN3, imageBTN4;
@@ -29,11 +33,13 @@ public class ListenAndChooseActivity extends AppCompatActivity implements TextTo
 
     WordsSQLite wordsSQLite;
     Bundle bundle;
-    int idcate, f = 0;
-    ArrayList<Words_Model> listword = new ArrayList<>();
-    ArrayList<Words_Model> arrayList = new ArrayList<>();
+    private int idcate, index = -1, correctAnswer;
+
+    ArrayList<Words_Model> listword;
+    ArrayList<Words_Model> curentWords;
+    ArrayList<ImageButton> btnImages;
     TextToSpeech finalMTts = null;
-    private int RESULT_CHOSEN = -1, RESULT_FAILED = 0;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,194 +49,163 @@ public class ListenAndChooseActivity extends AppCompatActivity implements TextTo
         bundle = getIntent.getBundleExtra("IDCate");
         idcate = bundle.getInt("id");
 
-        wordsSQLite = new WordsSQLite(this);
-        listword = wordsSQLite.getAllWordsbyCategori(idcate);
-//        for(int i= 0; i<listword.size();i++){
-//            Log.d("Test"," listword :" +listword.get(i).getEnglish());
-//        }
-        finalMTts = new TextToSpeech(this.getApplicationContext(), this);
-        addControl();
-        addEvent();
+        init();
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
+            }
+        }, 1000);
 
+    }
+
+    private void loadQuestion() {
+        wordsSQLite = new WordsSQLite(this);
+        listword = wordsSQLite.getWordsbyCategori(idcate);
+        finalMTts = new TextToSpeech(this.getApplicationContext(), this);
+    }
+
+    protected void showQuestion()
+    {
+        clearUI();
+        btnNext.setEnabled(listword.size() >= 4);
+        if (listword.size() >= 4)
+        {
+            curentWords.clear();
+            int position;
+            Random random = new Random();
+            while (curentWords.size() < 4)
+            {
+                position = random.nextInt(listword.size());
+
+                //Search in current list
+                Boolean hasInCurrent = false; //  <-- biến này kiểm tra xem từ đó đã có trong mảng chưa
+                for (int i = 0; i < curentWords.size(); i++)
+                {
+                    if (curentWords.get(i).getWordID() == listword.get(position).getWordID()) {
+                        hasInCurrent = true; // <-- kiểm tra đã có thì bật cái cờ lên và đi chỗ khác chơi
+                        break;
+                    }
+                }
+                if (!hasInCurrent) // vấn đề ở khúc này
+                {
+                    curentWords.add(listword.get(position));
+                }
+            }
+            correctAnswer = random.nextInt(4);
+            txtNewWord.setText(curentWords.get(correctAnswer).getEnglish() );
+            for (int i = 0; i < 4; i++)
+            {
+                btnImages.get(i).setBackgroundResource(
+                        getResources().getIdentifier(curentWords.get(i).getImage(),
+                                "drawable", getApplicationContext().getPackageName()));
+            }
+        }
+        else
+        {
+            index = -1;
+            clearUI();
+            Toast.makeText(this, "Het tu", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.btnNext:
+            {
+                break;
+            }
+            case R.id.imageBTN1:
+            {
+                processAnswer(0);
+                break;
+            }
+            case R.id.imageBTN2:
+            {
+                processAnswer(1);
+                break;
+            }
+            case R.id.imageBTN3:
+            {
+                processAnswer(2);
+                break;
+            }
+            case R.id.imageBTN4:
+            {
+                processAnswer(3);
+                break;
+            }
+        }
+    }
+
+    private void processAnswer(int answer)
+    {
+        if (answer == correctAnswer)
+        {
+            //Remove correct answer
+            for (int i = 0; i < listword.size(); i++)
+            {
+                if (listword.get(i).getWordID() == curentWords.get(correctAnswer).getWordID())
+                {
+                    listword.remove(i);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Toast.makeText(this, "Ban da tra loi sai!", Toast.LENGTH_LONG).show();
+        }
+        showQuestion();
+    }
+
+    private void init()
+    {
+        curentWords = new ArrayList<Words_Model>();
+        addControl();
+        loadQuestion();
+        showQuestion();
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finalMTts.speak(txtNewWord.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
     }
 
     private void addControl() {
+        btnImages = new ArrayList<ImageButton>();
+
         imageBTN1 = (ImageButton) findViewById(R.id.imageBTN1);
+        imageBTN1.setOnClickListener(this);
         imageBTN2 = (ImageButton) findViewById(R.id.imageBTN2);
+        imageBTN2.setOnClickListener(this);
         imageBTN3 = (ImageButton) findViewById(R.id.imageBTN3);
+        imageBTN3.setOnClickListener(this);
         imageBTN4 = (ImageButton) findViewById(R.id.imageBTN4);
+        imageBTN4.setOnClickListener(this);
+
+        btnImages.add(imageBTN1);
+        btnImages.add(imageBTN2);
+        btnImages.add(imageBTN3);
+        btnImages.add(imageBTN4);
+
         txtNewWord = (TextView) findViewById(R.id.txtNewWord);
         btnSpeak = (Button) findViewById(R.id.btnSoundSpeak);
+        btnSpeak.setOnClickListener(this);
         btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(this);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void addEvent() {
-
-//        RandomImg();
-        RandomImage();
-        getAnimationImageButton();
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                txtNewWord.setText("");
-                imageBTN1.setBackground(null);
-                imageBTN2.setBackground(null);
-                imageBTN3.setBackground(null);
-                imageBTN4.setBackground(null);
-                RandomImage();
-            }
-        });
-
-
-    }
-    //cách 1 để load random kết quả lên
-    public void RandomImage() {
-        Random random = new Random();
-
-        for (int i = 0; i < listword.size(); i++) {
-            int n = listword.size();
-            int x = random.nextInt(n);
-            arrayList.add(listword.get(x));
-            listword.remove(x);
-        }
-        RESULT_CHOSEN = random.nextInt(arrayList.size());
-        txtNewWord.setText(arrayList.get(RESULT_CHOSEN).getEnglish().toString());
-        imageBTN1.setBackgroundResource(getResources().getIdentifier(arrayList.get(0).getImage(), "drawable", getApplicationContext().getPackageName()));
-        imageBTN2.setBackgroundResource(getResources().getIdentifier(arrayList.get(1).getImage(), "drawable", getApplicationContext().getPackageName()));
-        imageBTN3.setBackgroundResource(getResources().getIdentifier(arrayList.get(2).getImage(), "drawable", getApplicationContext().getPackageName()));
-        imageBTN4.setBackgroundResource(getResources().getIdentifier(arrayList.get(3).getImage(), "drawable", getApplicationContext().getPackageName()));
-    }
-
-
-    //cách 2 để load random kết quả lên
-//    public void RandomImg() {
-//        ArrayList<Words_Model> temp = new ArrayList<>();
-//        temp.add(new Words_Model(listword.get(0)));
-//        temp.add(new Words_Model(listword.get(1)));
-//        temp.add(new Words_Model(listword.get(2)));
-//        temp.add(new Words_Model(listword.get(3)));
-//        for (int i = 0; i < temp.size(); i++) {
-//            txtNewWord.setText(temp.get(i).getEnglish());
-//        }
-//        Random random = new Random();
-//        int position = random.nextInt(temp.size());
-//
-//        imageBTN1.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-//        temp.remove(position);
-//
-//        position = random.nextInt(temp.size());
-//        imageBTN2.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-//        temp.remove(position);
-//
-//        position = random.nextInt(temp.size());
-//        imageBTN3.setBackgroundResource(getResources().getIdentifier(temp.get(position).getImage(), "drawable", getApplicationContext().getPackageName()));
-//        temp.remove(position);
-//
-//        imageBTN4.setBackgroundResource(getResources().getIdentifier(temp.get(0).getImage(), "drawable", getApplicationContext().getPackageName()));
-//    }
-
-    private void checkResult(int choose) {
-
-        if (choose == RESULT_CHOSEN) {
-            btnNext.setVisibility(View.VISIBLE);
-
-        } else {
-            Toast.makeText(this, "Sai rồi ", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void getAnimationImageButton() {
-        imageBTN4.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // PRESSED
-//                        btnNext.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                RandomImage();
-//                            }
-//                        });
-                        return true; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        // RELEASED
-                        checkResult(3);
-                        return true; // if you want to handle the touch event
-                }
-                return false;
-
-            }
-        });
-        imageBTN3.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // PRESSED
-//                        btnNext.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                RandomImage();
-//                            }
-//                        });
-                        return true; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        // RELEASED
-                        checkResult(2);
-                        return true; // if you want to handle the touch event
-                }
-                return false;
-
-            }
-        });
-        imageBTN2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // PRESSED
-//                        btnNext.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                RandomImage();
-//                            }
-//                        });
-                        return true; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        // RELEASED
-                        checkResult(1);
-                        return true; // if you want to handle the touch event
-                }
-                return false;
-
-            }
-        });
-
-        imageBTN1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // PRESSED
-//                        btnNext.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                RandomImage();
-//                            }
-//                        });
-                        return true;
-                    // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        // RELEASED
-                        checkResult(0);
-                        return true; // if you want to handle the touch event
-                }
-                return false;
-
-            }
-        });
+    private void clearUI() {
+        txtNewWord.setText("");
+        imageBTN1.setBackground(null);
+        imageBTN2.setBackground(null);
+        imageBTN3.setBackground(null);
+        imageBTN4.setBackground(null);
     }
 
     @Override
@@ -248,6 +223,5 @@ public class ListenAndChooseActivity extends AppCompatActivity implements TextTo
         }
         super.onDestroy();
     }
-
 
 }
