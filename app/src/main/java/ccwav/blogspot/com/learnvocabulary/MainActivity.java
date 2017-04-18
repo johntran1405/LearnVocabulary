@@ -171,68 +171,68 @@ public class MainActivity extends AppCompatActivity {
         },TIME_DELAY_SCALE_BTN);
     }
 
-    public void onTouch(View v) {
-        //get Animation scale
-        final Animation anim_home = AnimationUtils.loadAnimation(this, R.anim.scale);
-        // set animation scale when the user touch one in all topic button
-        if (v.getId() == R.id.R1 || v.getId() == R.id.btn_home) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idhome=listcate.get(0).getCategori_ID();
-            bundle.putInt("Id",idhome);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-
-        }else if (v.getId() == R.id.R3 || v.getId() == R.id.btn_people) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idPeople=listcate.get(4).getCategori_ID();
-            bundle.putInt("Id",idPeople);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        } else if (v.getId() == R.id.R5 || v.getId() == R.id.btn_fruit) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idfruit=listcate.get(7).getCategori_ID();
-            bundle.putInt("Id",idfruit);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        } else if (v.getId() == R.id.R7 || v.getId() == R.id.btn_animal) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idanimal=listcate.get(1).getCategori_ID();
-            bundle.putInt("Id",idanimal);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        }
-        else if (v.getId() == R.id.R2 || v.getId() == R.id.btn_sport) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idsport=listcate.get(6).getCategori_ID();
-            bundle.putInt("Id",idsport);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        } else if (v.getId() == R.id.R4 || v.getId() == R.id.btn_travel) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idtravel=listcate.get(2).getCategori_ID();
-            bundle.putInt("Id",idtravel);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        } else if (v.getId() == R.id.R6 || v.getId() == R.id.btn_vegetable) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idveget=listcate.get(5).getCategori_ID();
-            bundle.putInt("Id",idveget);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        } else if (v.getId() == R.id.R8 || v.getId() == R.id.btn_food ) {
-            v.startAnimation(anim_home);
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            int idfood=listcate.get(3).getCategori_ID();
-            bundle.putInt("Id",idfood);
-            intent.putExtra("ID",bundle);
-            startActivity(intent);
-        }
-    }
+//    public void onTouch(View v) {
+//        //get Animation scale
+//        final Animation anim_home = AnimationUtils.loadAnimation(this, R.anim.scale);
+//        // set animation scale when the user touch one in all topic button
+//        if (v.getId() == R.id.R1 || v.getId() == R.id.btn_home) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idhome=listcate.get(0).getCategori_ID();
+//            bundle.putInt("Id",idhome);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//
+//        }else if (v.getId() == R.id.R3 || v.getId() == R.id.btn_people) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idPeople=listcate.get(4).getCategori_ID();
+//            bundle.putInt("Id",idPeople);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        } else if (v.getId() == R.id.R5 || v.getId() == R.id.btn_fruit) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idfruit=listcate.get(7).getCategori_ID();
+//            bundle.putInt("Id",idfruit);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        } else if (v.getId() == R.id.R7 || v.getId() == R.id.btn_animal) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idanimal=listcate.get(1).getCategori_ID();
+//            bundle.putInt("Id",idanimal);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        }
+//        else if (v.getId() == R.id.R2 || v.getId() == R.id.btn_sport) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idsport=listcate.get(6).getCategori_ID();
+//            bundle.putInt("Id",idsport);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        } else if (v.getId() == R.id.R4 || v.getId() == R.id.btn_travel) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idtravel=listcate.get(2).getCategori_ID();
+//            bundle.putInt("Id",idtravel);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        } else if (v.getId() == R.id.R6 || v.getId() == R.id.btn_vegetable) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idveget=listcate.get(5).getCategori_ID();
+//            bundle.putInt("Id",idveget);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        } else if (v.getId() == R.id.R8 || v.getId() == R.id.btn_food ) {
+//            v.startAnimation(anim_home);
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            int idfood=listcate.get(3).getCategori_ID();
+//            bundle.putInt("Id",idfood);
+//            intent.putExtra("ID",bundle);
+//            startActivity(intent);
+//        }
+//    }
 }

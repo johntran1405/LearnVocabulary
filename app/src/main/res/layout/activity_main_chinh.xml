@@ -5,142 +5,162 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroudchinh"
-    tools:context="ccwav.blogspot.com.learnvocabulary.MainChinhActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="ccwav.blogspot.com.learnvocabulary.MainChinhActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:gravity="right"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnTuDien"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/tudien" />
-
-            <Button
-                android:id="@+id/btnBaiHoc"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/baihoc" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Từ Điển"
-                android:textSize="25dp"
-                android:textStyle="normal|bold" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Bài Học"
-                android:textSize="25dp"
-                android:textStyle="normal|bold" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnInfo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/info" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnTest"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/kynang" />
-
-            <Button
-                android:id="@+id/btnthongtin"
-                android:layout_width="100dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/thongtin" />
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btnTuDien"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/dictionary_icon" />
+
+                <Button
+                    android:id="@+id/btnBaiHoc"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/learn_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/editText2"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:text="Từ Điển"
+                    android:textSize="25dp"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:text="Bài Học"
+                    android:textSize="25dp"
+                    android:textStyle="normal|bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                android:layout_width="130dp"
+                <Button
+                    android:id="@+id/btnTest"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bookmark_icon" />
+
+                <Button
+                    android:id="@+id/btnthongtin"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/myapp_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_weight="0.5"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Kiểm tra"
-                android:textSize="25dp"
-                android:textStyle="normal|bold" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
+                <TextView
 
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_weight="0.5"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Thông tin"
-                android:textSize="25dp"
-                android:textStyle="normal|bold" />
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:text="Kiểm tra"
+                    android:textSize="25dp"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:text="Thông tin"
+                    android:textSize="25dp"
+                    android:textStyle="normal|bold" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
-
-
 </LinearLayout>

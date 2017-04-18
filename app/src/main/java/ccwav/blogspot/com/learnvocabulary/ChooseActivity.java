@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
@@ -83,7 +84,8 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
         {
             index = -1;
             clearUI();
-            Toast.makeText(this, "Da học hết từ", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this,"Xin Chúc Mừng","Bạn đã hoàn thành");
+           // Toast.makeText(this, "Da học hết từ", Toast.LENGTH_SHORT).show();
         }
 
     }

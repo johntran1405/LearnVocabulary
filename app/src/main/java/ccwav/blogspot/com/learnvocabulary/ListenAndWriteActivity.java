@@ -1,6 +1,7 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.IDButton;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
@@ -51,6 +53,7 @@ public class ListenAndWriteActivity extends AppCompatActivity implements TextToS
     Bundle bundle;
     int idcate;
     TextToSpeech finalMTts = null;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenwrite_layout_m);
@@ -313,9 +316,10 @@ public class ListenAndWriteActivity extends AppCompatActivity implements TextToS
                 public void run() {
                     finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
                 }
-            }, 2000);
-        } else {
-            Toast.makeText(this, "Bạn đã trả lời hết câu hỏi !", Toast.LENGTH_LONG).show();
+            }, 1000);
+        } else
+        {
+            DialogEx.show(this, "Xin Chúc Mừng", "Bạn đã hoàn thành !!");
         }
 
     }

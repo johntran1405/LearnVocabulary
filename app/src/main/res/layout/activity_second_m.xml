@@ -1,86 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_second"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/second_menu_background"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity"
-    >
+    android:orientation="vertical">
 
 
     <RelativeLayout
-        android:layout_width="306dp"
-        android:layout_height="287dp"
-        android:id="@+id/se_R1">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_corner"
+        android:elevation="40dp"
+        android:padding="10dp">
 
 
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-            android:background="@drawable/circle"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-        <Button
-                android:id="@+id/btn_vocabulary"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/vocabulary"
-                android:onClick="TouchButton" />
+        <LinearLayout
+            android:id="@+id/btnGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Skill"
+                android:textColor="#ff00"
+                android:gravity="center"
+                android:textSize="30dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:text="Select Skill"
+                android:background="#000"
+                android:gravity="center" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/LnVocabulary"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/vocabulary" />
 
-        <Button
-            android:id="@+id/btn_listen_write"
-            android:layout_width="@dimen/Se_Relatevice_Height"
-            android:layout_height="@dimen/Se_Relatevice_Height"
-            android:background="@drawable/listen_write"
-            android:onClick="TouchButton"
-            android:layout_alignBaseline="@+id/textView"
-            android:layout_alignBottom="@+id/textView"
-            android:layout_alignLeft="@+id/btn_listen_choose"
-            android:layout_alignStart="@+id/btn_listen_choose" />
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:text="Vocabulary"
+                    android:textSize="25dp" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_listen_choose"
-            android:layout_width="@dimen/Se_Relatevice_Height"
-            android:layout_height="@dimen/Se_Relatevice_Height"
-            android:background="@drawable/listen_choose"
-            android:onClick="TouchButton"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/LnListenChoose"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_choose"
-            android:layout_width="@dimen/Se_Relatevice_Height"
-            android:layout_height="@dimen/Se_Relatevice_Height"
-            android:background="@drawable/choose"
-            android:onClick="TouchButton"
-            android:paddingBottom="30dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginEnd="8dp" />
+                <ImageView
+                    android:id="@+id/imgListenChoose"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/listen_choose" />
 
-        <Button
-            android:id="@+id/btn_speech"
-            android:layout_width="@dimen/Se_Relatevice_Height"
-            android:layout_height="@dimen/Se_Relatevice_Height"
-            android:background="@drawable/speech"
-            android:onClick="TouchButton"
-            android:paddingBottom="90dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_alignTop="@+id/btn_choose"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/txtListenChoose"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:text="Listen And Choose"
+                    android:textSize="25dp" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/LnListenWrite"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imgListenWrite"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/listen_write" />
+
+                <TextView
+                    android:id="@+id/txtListenWrite"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:text="Listen And Write"
+                    android:textSize="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/LnSpeech"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgSpeech"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/speech" />
+
+                <TextView
+                    android:id="@+id/txtSpeech"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:text="Speech"
+                    android:textSize="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/LnChoice"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgChoice"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/choose" />
+
+                <TextView
+                    android:id="@+id/txtChoice"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:text="Choice"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF8A80"
+                android:text="close"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
     </RelativeLayout>
-
 
 </LinearLayout>

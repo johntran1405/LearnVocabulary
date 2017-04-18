@@ -1,13 +1,13 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Words_Model;
 
@@ -41,7 +41,6 @@ public class ListenAndChooseActivity extends AppCompatActivity
     TextToSpeech finalMTts = null;
 
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listenchoose_layout_m);
@@ -50,12 +49,12 @@ public class ListenAndChooseActivity extends AppCompatActivity
         idcate = bundle.getInt("id");
 
         init();
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
+                finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
-        }, 1000);
+        }, 500);
 
     }
 
@@ -65,23 +64,19 @@ public class ListenAndChooseActivity extends AppCompatActivity
         finalMTts = new TextToSpeech(this.getApplicationContext(), this);
     }
 
-    protected void showQuestion()
-    {
+    protected void showQuestion() {
         clearUI();
         btnNext.setEnabled(listword.size() >= 4);
-        if (listword.size() >= 4)
-        {
+        if (listword.size() >= 4) {
             curentWords.clear();
             int position;
             Random random = new Random();
-            while (curentWords.size() < 4)
-            {
+            while (curentWords.size() < 4) {
                 position = random.nextInt(listword.size());
 
                 //Search in current list
                 Boolean hasInCurrent = false; //  <-- biến này kiểm tra xem từ đó đã có trong mảng chưa
-                for (int i = 0; i < curentWords.size(); i++)
-                {
+                for (int i = 0; i < curentWords.size(); i++) {
                     if (curentWords.get(i).getWordID() == listword.get(position).getWordID()) {
                         hasInCurrent = true; // <-- kiểm tra đã có thì bật cái cờ lên và đi chỗ khác chơi
                         break;
@@ -93,76 +88,61 @@ public class ListenAndChooseActivity extends AppCompatActivity
                 }
             }
             correctAnswer = random.nextInt(4);
-            txtNewWord.setText(curentWords.get(correctAnswer).getEnglish() );
-            for (int i = 0; i < 4; i++)
-            {
+            txtNewWord.setText(curentWords.get(correctAnswer).getEnglish());
+            for (int i = 0; i < 4; i++) {
                 btnImages.get(i).setBackgroundResource(
                         getResources().getIdentifier(curentWords.get(i).getImage(),
                                 "drawable", getApplicationContext().getPackageName()));
             }
-        }
-        else
-        {
+        } else {
             index = -1;
             clearUI();
-            Toast.makeText(this, "Het tu", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this,"Xin Chúc Mừng","Bạn đã hoàn thành !!");
+
         }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.btnNext:
-            {
+        switch (view.getId()) {
+            case R.id.btnNext: {
                 break;
             }
-            case R.id.imageBTN1:
-            {
+            case R.id.imageBTN1: {
                 processAnswer(0);
                 break;
             }
-            case R.id.imageBTN2:
-            {
+            case R.id.imageBTN2: {
                 processAnswer(1);
                 break;
             }
-            case R.id.imageBTN3:
-            {
+            case R.id.imageBTN3: {
                 processAnswer(2);
                 break;
             }
-            case R.id.imageBTN4:
-            {
+            case R.id.imageBTN4: {
                 processAnswer(3);
                 break;
             }
         }
     }
 
-    private void processAnswer(int answer)
-    {
-        if (answer == correctAnswer)
-        {
+    private void processAnswer(int answer) {
+        if (answer == correctAnswer) {
             //Remove correct answer
-            for (int i = 0; i < listword.size(); i++)
-            {
-                if (listword.get(i).getWordID() == curentWords.get(correctAnswer).getWordID())
-                {
+            for (int i = 0; i < listword.size(); i++) {
+                if (listword.get(i).getWordID() == curentWords.get(correctAnswer).getWordID()) {
                     listword.remove(i);
                     break;
                 }
             }
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Ban da tra loi sai!", Toast.LENGTH_LONG).show();
         }
         showQuestion();
     }
 
-    private void init()
-    {
+    private void init() {
         curentWords = new ArrayList<Words_Model>();
         addControl();
         loadQuestion();
@@ -170,7 +150,7 @@ public class ListenAndChooseActivity extends AppCompatActivity
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finalMTts.speak(txtNewWord.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
+                finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
     }
@@ -223,5 +203,6 @@ public class ListenAndChooseActivity extends AppCompatActivity
         }
         super.onDestroy();
     }
+
 
 }

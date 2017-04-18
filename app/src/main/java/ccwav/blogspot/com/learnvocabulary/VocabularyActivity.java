@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
@@ -135,8 +136,8 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
             txtEN.setText(listword.get(position).getEnglish());
             txtSpeel.setText(listword.get(position).getSpeech());
 
-            final Dialog dialog = new Dialog(getActivity(),R.style.free_floating_dialog);
-            dialog.setContentView(R.layout.content_layout);
+            final Dialog dialog = new Dialog(getActivity(),R.style.dialog_content);
+            dialog.setContentView(R.layout.dialog_content);
 
             TextView txtMean = (TextView) dialog.findViewById(R.id.txtMean);
             TextView txtContext = (TextView) dialog.findViewById(R.id.txtContext);
@@ -179,6 +180,7 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
             });
+
 
             return swipeView;
         }
