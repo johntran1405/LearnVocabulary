@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#0af231"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Trò Chơi"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn hình ảnh chính xác:"
+        android:textColor="#FFFF0000"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btword1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:text="apple" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp">
+            <ImageButton
+                android:id="@+id/ibpicture1"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btword2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:text="mango" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp">
+            <ImageButton
+                android:id="@+id/ibpicture2"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btword3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:text="lemon" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp">
+            <ImageButton
+                android:id="@+id/ibpicture3"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btword4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:text="papaya" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp">
+            <ImageButton
+                android:id="@+id/ibpicture4"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_tieptheo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="nextBai"
+        android:text="Tiếp theo" />
+</LinearLayout>

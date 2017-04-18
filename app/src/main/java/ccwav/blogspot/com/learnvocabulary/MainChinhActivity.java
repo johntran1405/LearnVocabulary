@@ -24,6 +24,7 @@ public class MainChinhActivity extends AppCompatActivity implements View.OnClick
         btnTudien.setOnClickListener(this);
         btnBaihoc.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
+        btnTest.setOnClickListener(this);
     }
 
     private void addControl() {
@@ -51,6 +52,8 @@ public class MainChinhActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnInfo:
                 DialogEx.show(this,"Info","Thành viên nhóm : \n Tuyến Trần \n Việt Nguyễn \n Sang Võ \n Tú Tạ");
             case R.id.btnTest:
+                Intent i3 = new Intent(MainChinhActivity.this, TestActivity.class);
+                startActivity(i3);
             case R.id.btnthongtin:
 
         }

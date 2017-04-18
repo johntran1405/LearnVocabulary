@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="THỰC HÀNH PHÁT ÂM"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="#0af231"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/itemPhatAm"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:id="@+id/itemMauCau"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/icon_maucau" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="THEO MẪU CÂU"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/itemHinhAnh"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/icon_hinhanh" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="THEO HÌNH ẢNH"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/itemChuDe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/icon_chude" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="THEO CHỦ ĐỀ"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

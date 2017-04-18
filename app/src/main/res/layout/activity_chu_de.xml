@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn hình ảnh cùng chủ đề và phát âm"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="#0af231"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#ff0000"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center">
+        <CheckBox
+            android:id="@+id/cb_answer1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+        <CheckBox
+            android:id="@+id/cb_answer2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+        <CheckBox
+            android:id="@+id/cb_answer3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center">
+        <CheckBox
+            android:id="@+id/cb_answer4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+        <CheckBox
+            android:id="@+id/cb_answer5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+        <CheckBox
+            android:id="@+id/cb_answer6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:textSize="0dp"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mời bạn nhấn READ để phát âm"
+        android:textSize="20sp"
+        android:textColor="#FFFF0000"/>
+    <Button
+        android:id="@+id/btread"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSpeech"
+        android:text="Read"
+        android:background="@drawable/blue_button"/>
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btread"
+        android:layout_below="@+id/btread" >
+    </ListView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/bt_kiemtra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kiểm tra"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/blue_button"/>
+        <Button
+            android:id="@+id/bt_tieptheo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="nextBai"
+            android:text="tiếp theo"
+            android:background="@drawable/blue_button"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_ketqua"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp" />
+</LinearLayout>

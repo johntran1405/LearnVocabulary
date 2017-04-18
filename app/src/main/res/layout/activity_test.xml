@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:id="@+id/itemLuyenNghe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/icon_nghe" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="LUYỆN NGHE TIẾNG ANH"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/itemThucHanh"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/icon_th" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="THỰC HÀNH PHÁT ÂM"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/itemInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/write" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector"
+                android:gravity="center"
+                android:text="THỰC HÀNH VIẾT TỪ"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
