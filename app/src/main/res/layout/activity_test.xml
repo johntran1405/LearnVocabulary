@@ -4,11 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroudchinh">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="center_vertical|center"
         android:orientation="vertical"
         android:paddingLeft="10dp">
@@ -22,6 +25,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/icon_nghe" />
 
             <TextView
@@ -43,6 +47,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/icon_th" />
 
             <TextView
@@ -65,6 +70,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/write" />
 
             <TextView

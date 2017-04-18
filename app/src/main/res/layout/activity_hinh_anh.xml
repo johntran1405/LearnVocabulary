@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroudchinh">
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -30,15 +31,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
+
         <Button
             android:id="@+id/btread"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginRight="20dp"
+            android:background="@drawable/blue_button"
             android:onClick="onSpeech"
-            android:text="Read"
-            android:background="@drawable/blue_button"/>
+            android:text="Read" />
+
         <Button
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"

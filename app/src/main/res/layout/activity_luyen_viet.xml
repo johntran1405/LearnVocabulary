@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ccwav.blogspot.com.learnvocabulary.LuyenVietActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroudchinh">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Luyện Nghe Viết"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="#0af231"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/itemLuyenNghe"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/txtcauhoi"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:layout_marginTop="40dp"
+            android:text="TextView"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/editdientu"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_corner"
+            android:ems="10"
+            android:hint="    Nhập từ điền vào chổ trống"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColor="@color/abc_search_url_text_selected"
+            android:textColorHint="@color/abc_search_url_text_selected" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonloa"
+                android:layout_width="69dp"
+                android:layout_height="68dp"
+                android:background="@drawable/loa"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttontt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Tiếp theo"
+            android:background="@drawable/blue_button"/>
+    </LinearLayout>
+
+</LinearLayout>

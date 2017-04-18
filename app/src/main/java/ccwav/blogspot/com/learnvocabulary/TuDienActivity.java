@@ -52,7 +52,7 @@ public class TuDienActivity extends AppCompatActivity  implements TextToSpeech.O
         processCopy();
         addControl();
         addEvent();
-        showListtudien();
+        //showListtudien();
     }
 
     private void addEvent() {
@@ -73,7 +73,7 @@ public class TuDienActivity extends AppCompatActivity  implements TextToSpeech.O
     }
 
     private void xuLyTim(String newText) {
-
+        database=openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE,null);
         Cursor cursor=database.query(
                 "data",
                 null,
@@ -103,6 +103,7 @@ public class TuDienActivity extends AppCompatActivity  implements TextToSpeech.O
         }
         cursor.close();
         tudienAdapter.notifyDataSetChanged();
+
     }
     private void addControl() {
         lvtudien= (ListView) findViewById(R.id.LvTudien);
@@ -132,30 +133,30 @@ public class TuDienActivity extends AppCompatActivity  implements TextToSpeech.O
         });
     }
 
-    private void showListtudien() {
-        database=openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE,null);
-        Cursor cursor=database.query("data",null,null,null,null,null,null);
-        cursor.moveToNext();
-        dstudien.clear();
-        while (cursor.moveToNext())
-        {
-            int _id=cursor.getInt(0);
-            String word=cursor.getString(1);
-            String mean=cursor.getString(2);
-            String History=cursor.getString(3);
-
-
-            Tudien tudien=new Tudien();
-            tudien.set_id(_id);
-            tudien.setWord(word);
-            tudien.setMean(mean);
-            tudien.setHistory(History);
-
-            dstudien.add(tudien);
-        }
-        cursor.close();
-        tudienAdapter.notifyDataSetChanged();
-    }
+//    private void showListtudien() {
+//        database=openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE,null);
+//        Cursor cursor=database.query("data",null,null,null,null,null,null);
+//        cursor.moveToNext();
+//        dstudien.clear();
+//        while (cursor.moveToNext())
+//        {
+//            int _id=cursor.getInt(0);
+//            String word=cursor.getString(1);
+//            String mean=cursor.getString(2);
+//            String History=cursor.getString(3);
+//
+//
+//            Tudien tudien=new Tudien();
+//            tudien.set_id(_id);
+//            tudien.setWord(word);
+//            tudien.setMean(mean);
+//            tudien.setHistory(History);
+//
+//            dstudien.add(tudien);
+//        }
+//        cursor.close();
+//        tudienAdapter.notifyDataSetChanged();
+//    }
 
     private void processCopy() {
         File dbFile = getDatabasePath(DATABASE_NAME);

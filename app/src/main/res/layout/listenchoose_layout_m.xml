@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/image_background_2"
+    android:background="@drawable/backgroudchinh"
     tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
 
     <LinearLayout
@@ -68,28 +68,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/btnSoundSpeak"
-                android:background="@drawable/sound_speak"/>
+            android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/btnSoundSpeak"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/loa" />
+
+            <Button
+                android:id="@+id/btnNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next"
-                android:layout_gravity="right"
-                android:id="@+id/btnNext"
-                android:visibility="invisible"
                 android:layout_alignBaseline="@+id/btn_soundSpeak"
                 android:layout_alignBottom="@+id/btn_soundSpeak"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_gravity="right"
+                android:text="Next"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 

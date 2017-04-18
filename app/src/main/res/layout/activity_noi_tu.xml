@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroudchinh">
 
     <TextView
         android:layout_width="fill_parent"
@@ -136,5 +137,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="nextBai"
-        android:text="Tiếp theo" />
+        android:text="Tiếp theo"
+        android:background="@drawable/blue_button"/>
 </LinearLayout>

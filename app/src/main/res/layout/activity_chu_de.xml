@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroudchinh">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -88,13 +89,14 @@
         android:onClick="onSpeech"
         android:text="Read"
         android:background="@drawable/blue_button"/>
+
     <ListView
         android:id="@+id/listView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btread"
-        android:layout_below="@+id/btread" >
-    </ListView>
+        android:layout_below="@+id/btread"></ListView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

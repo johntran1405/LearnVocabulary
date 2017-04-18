@@ -2,6 +2,7 @@ package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -152,12 +153,16 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
         arrButton = new ArrayList<Button>();
         imageView = (ImageView) findViewById(R.id.imagecate);
         btnA = (Button) findViewById(R.id.dapan1);
+        btnA.setBackgroundColor(Color.parseColor("#33FFFF"));
         btnA.setOnClickListener(this);
         btnB = (Button) findViewById(R.id.dapan2);
+        btnB.setBackgroundColor(Color.parseColor("#33FFFF"));
         btnB.setOnClickListener(this);
         btnC = (Button) findViewById(R.id.dapan3);
+        btnC.setBackgroundColor(Color.parseColor("#33FFFF"));
         btnC.setOnClickListener(this);
         btnD = (Button) findViewById(R.id.dapan4);
+        btnD.setBackgroundColor(Color.parseColor("#33FFFF"));
         btnD.setOnClickListener(this);
         arrButton.add(btnA);
         arrButton.add(btnB);

@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MauCauActivity">
+    tools:context=".MauCauActivity"
+    android:background="@drawable/backgroudchinh">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

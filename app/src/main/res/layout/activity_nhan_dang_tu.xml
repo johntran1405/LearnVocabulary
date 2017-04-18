@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroudchinh">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
             android:onClick="loa"
             android:layout_marginTop="150dp"
             android:layout_marginRight="120dp"
-            android:background="@drawable/iconloa"
+            android:background="@drawable/loa"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,29 +48,30 @@
                 android:id="@+id/rg_answer">
                 <RadioButton
                     android:id="@+id/rb_answer1"
-                    android:layout_width="130dp"
-                    android:layout_height="110dp"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     android:textSize="0sp"
                     android:background="@drawable/icon_fb"
                     />
+
                 <RadioButton
                     android:id="@+id/rb_answer2"
-                    android:layout_width="130dp"
-                    android:layout_height="110dp"
-                    android:textSize="0sp"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     android:background="@drawable/icon_fb"
-                    />
+                    android:textSize="0sp" />
+
                 <RadioButton
                     android:id="@+id/rb_answer3"
-                    android:layout_width="130dp"
-                    android:layout_height="110dp"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     android:textSize="0sp"
                     android:background="@drawable/icon_fb"
                     />
                 <RadioButton
                     android:id="@+id/rb_answer4"
-                    android:layout_width="130dp"
-                    android:layout_height="110dp"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     android:textSize="0sp"
                     android:background="@drawable/icon_fb"
                     />

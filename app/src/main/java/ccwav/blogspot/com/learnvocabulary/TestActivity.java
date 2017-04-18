@@ -1,10 +1,8 @@
 package ccwav.blogspot.com.learnvocabulary;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -43,21 +41,5 @@ public class TestActivity extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Thông báo !")
-                .setMessage("Bạn có muốn thoát ?")
-                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
-                    }
-                })
-                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .show();
-    }
+
 }

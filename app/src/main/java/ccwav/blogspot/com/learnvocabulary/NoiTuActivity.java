@@ -1,6 +1,7 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -70,24 +71,31 @@ public class NoiTuActivity extends AppCompatActivity {
         int resourceId4 = getResources().getIdentifier("@drawable/" + four, null, getPackageName());
         ibpicture4.setBackgroundResource(resourceId4);
         ibpicture4.setOnClickListener(OnClick);
-        checkkiemtra();
+
+
     }
     View.OnClickListener OnClick = new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btword1:
+                    btword1.setBackgroundColor(Color.parseColor("#FF9900"));
                     clickbutton = a;
                     break;
                 case R.id.btword2:
+                    btword2.setBackgroundColor(Color.parseColor("#FF9900"));
                     clickbutton = b;
                     break;
                 case R.id.btword3:
+                    btword3.setBackgroundColor(Color.parseColor("#FF9900"));
                     clickbutton = c;
                     break;
                 case R.id.btword4:
+                    btword4.setBackgroundColor(Color.parseColor("#FF9900"));
                     clickbutton = d;
                     break;
+
                 case R.id.ibpicture1:
                     clickImg = first;
                     if (clickbutton.toLowerCase().equals(clickImg.toLowerCase())) {
@@ -164,6 +172,7 @@ public class NoiTuActivity extends AppCompatActivity {
                         hienAnhvaButton();
                         Toast.makeText(NoiTuActivity.this, "Sai", Toast.LENGTH_SHORT).show();
                     }
+
                     break;
             }
         }
@@ -178,10 +187,12 @@ public class NoiTuActivity extends AppCompatActivity {
         btword2.setVisibility(View.VISIBLE);
         btword3.setVisibility(View.VISIBLE);
         btword4.setVisibility(View.VISIBLE);
+        btword1.setBackgroundColor(Color.parseColor("#00CCCC"));
+        btword2.setBackgroundColor(Color.parseColor("#00CCCC"));
+        btword3.setBackgroundColor(Color.parseColor("#00CCCC"));
+        btword4.setBackgroundColor(Color.parseColor("#00CCCC"));
     }
-    private void checkkiemtra() {
 
-    }
 
     private void initView() {
         btword1 = (Button) findViewById(R.id.btword1);
