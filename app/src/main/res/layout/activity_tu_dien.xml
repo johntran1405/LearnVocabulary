@@ -24,10 +24,10 @@
             android:background="@drawable/round_corner"
             android:ems="10"
             android:hint="    Nhập từ cần tìm"
-            android:textColorHint="@color/abc_search_url_text_selected"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
             android:textColor="@color/abc_search_url_text_selected"
-            />
+            android:textColorHint="@color/abc_search_url_text_selected" />
     </LinearLayout>
 
     <ListView
