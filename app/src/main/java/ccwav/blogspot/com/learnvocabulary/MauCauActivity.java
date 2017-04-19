@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteContactController;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteDataController;
 import ccwav.blogspot.com.learnvocabulary.Model.maucaudbModel;
@@ -138,6 +139,7 @@ public class MauCauActivity extends AppCompatActivity {
             }
         }else {
             Toast.makeText(getBaseContext(), "Bạn chưa phát âm", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this, "Nhắc nhở", "Bạn chưa phát âm!!");
         }
     }
     public void onBackPressed() {
@@ -161,7 +163,7 @@ public class MauCauActivity extends AppCompatActivity {
             txtmaucau.setText(maucau);
             dapan = listMauCau.get(value).getSentence();
         } else {
-            Toast.makeText(MauCauActivity.this, "Hết bài!", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this, "Xin Chúc Mừng", "Bạn đã hoàn thành !!");
         }
     }
 }

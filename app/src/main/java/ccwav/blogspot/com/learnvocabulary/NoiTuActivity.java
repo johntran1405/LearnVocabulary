@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteContactController;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteDataController;
 import ccwav.blogspot.com.learnvocabulary.Model.trochoidbModel;
@@ -112,7 +112,7 @@ public class NoiTuActivity extends AppCompatActivity {
 //                        Toast.makeText(TroChoiActivity.this, "đúng", Toast.LENGTH_SHORT).show();
                     } else {
                         hienAnhvaButton();
-                        Toast.makeText(NoiTuActivity.this, "Sai", Toast.LENGTH_SHORT).show();
+                        DialogEx.show(NoiTuActivity.this, "nhắc nhở", "Bạn làm sai !!");
                     }
                     break;
                 case R.id.ibpicture2:
@@ -132,7 +132,7 @@ public class NoiTuActivity extends AppCompatActivity {
 //                        Toast.makeText(TroChoiActivity.this, "đúng", Toast.LENGTH_SHORT).show();
                     } else {
                         hienAnhvaButton();
-                        Toast.makeText(NoiTuActivity.this, "Sai", Toast.LENGTH_SHORT).show();
+                        DialogEx.show(NoiTuActivity.this, "nhắc nhở", "Bạn làm sai !!");
                     }
                     break;
                 case R.id.ibpicture3:
@@ -151,7 +151,7 @@ public class NoiTuActivity extends AppCompatActivity {
 //                        Toast.makeText(TroChoiActivity.this, "đúng", Toast.LENGTH_SHORT).show();
                     } else {
                         hienAnhvaButton();
-                        Toast.makeText(NoiTuActivity.this, "Sai", Toast.LENGTH_SHORT).show();
+                        DialogEx.show(NoiTuActivity.this, "nhắc nhở", "Bạn làm sai !!");
                     }
                     break;
                 case R.id.ibpicture4:
@@ -170,7 +170,7 @@ public class NoiTuActivity extends AppCompatActivity {
 //                        Toast.makeText(TroChoiActivity.this, "đúng", Toast.LENGTH_SHORT).show();
                     } else {
                         hienAnhvaButton();
-                        Toast.makeText(NoiTuActivity.this, "Sai", Toast.LENGTH_SHORT).show();
+                        DialogEx.show(NoiTuActivity.this, "nhắc nhở", "Bạn làm sai !!");
                     }
 
                     break;
@@ -209,7 +209,7 @@ public class NoiTuActivity extends AppCompatActivity {
 
     public void nextBai(View v) {
         if (done < 4) {
-            Toast.makeText(NoiTuActivity.this, "Chưa hoàn thành bài !", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this, "Nhắc nhở", "Chưa hoàn thành bài !!");
         } else {
             hienAnhvaButton();
             value++;
@@ -241,7 +241,7 @@ public class NoiTuActivity extends AppCompatActivity {
                 int resourceId4 = getResources().getIdentifier("@drawable/" + four, null, getPackageName());
                 ibpicture4.setBackgroundResource(resourceId4);
             } else {
-                Toast.makeText(NoiTuActivity.this, "Hết bài!", Toast.LENGTH_SHORT).show();
+                DialogEx.show(this, "Xin Chúc Mừng", "Bạn đã hoàn thành !!");
             }
         }
     }

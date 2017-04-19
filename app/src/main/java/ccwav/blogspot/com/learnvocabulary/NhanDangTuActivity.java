@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,13 +19,15 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
+import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteContactController;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteDataController;
 import ccwav.blogspot.com.learnvocabulary.Model.nhandangtudbModel;
 
-public class NhanDangTuActivity extends AppCompatActivity {
+public class NhanDangTuActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     final int currentDBVersion = 2;
     final String DBVERSION_Key = "DBVERSION_Key";
     ArrayList<nhandangtudbModel> listData;
@@ -34,11 +39,14 @@ public class NhanDangTuActivity extends AppCompatActivity {
 
     ImageButton btnLoa;
     MediaPlayer mp = new MediaPlayer();
+    TextToSpeech finalMTts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nhan_dang_tu);
+        finalMTts= new TextToSpeech(this.getApplicationContext(),this);
+
         initView();
         createDB();
         listData = getData();
@@ -73,6 +81,12 @@ public class NhanDangTuActivity extends AppCompatActivity {
         rb_answer4.setBackgroundResource(resourceId4);
 
         KiemTraDapAn();
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                finalMTts.speak(listData.get(value).getAnswertrue(), TextToSpeech.QUEUE_FLUSH,null);
+            }
+        }, 1000);
     }
     private void KiemTraDapAn() {
         bt_kiemtra.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +162,12 @@ public class NhanDangTuActivity extends AppCompatActivity {
         if (value < listData.size()) {
             String n = listData.get(value).getName();
             txtname.setText(n);
-
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    finalMTts.speak(listData.get(value).getAnswertrue(), TextToSpeech.QUEUE_FLUSH,null);
+                }
+            }, 1000);
 
             String a= listData.get(value).getAnswer1();
             rb_answer1.setText(a);
@@ -179,28 +198,34 @@ public class NhanDangTuActivity extends AppCompatActivity {
 
         } else {
             bt_kiemtra.setEnabled(false);
-            Toast.makeText(NhanDangTuActivity.this, "Hết bài!", Toast.LENGTH_SHORT).show();
+            DialogEx.show(this, "Xin Chúc Mừng", "Bạn đã hoàn thành !!");
         }
     }
     public void loa(View v){
         btnLoa = (ImageButton)findViewById(R.id.imageButtonLoa);
-        try{
-            if (mp != null){
-                mp.stop();
-                mp.release();
-                mp = null;
-            }
-            String strAudioName = listData.get(value).getAudio();
-            int resourceId = getResources().getIdentifier(strAudioName, "raw", getPackageName());
-            mp = MediaPlayer.create(NhanDangTuActivity.this, resourceId);
-            //mp = MediaPlayer.create(NhanDangTuActivity.this, R.raw.apple);
-            mp.start();
-            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                }
-            });
+        String strName = listData.get(value).getAnswertrue();
+        Log.d("DDDĐ",strName);
+        finalMTts.speak(strName, TextToSpeech.QUEUE_FLUSH,null);
+
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR) {
+            finalMTts.setLanguage(Locale.US);
+        } else {
+            // Initialization failed.
+            Log.e("app", "Could not initialize TextToSpeech.");
         }
-        catch (Exception e){}
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (finalMTts != null)
+        {
+            finalMTts.stop();
+            finalMTts.shutdown();
+        }
+        super.onDestroy();
     }
 }

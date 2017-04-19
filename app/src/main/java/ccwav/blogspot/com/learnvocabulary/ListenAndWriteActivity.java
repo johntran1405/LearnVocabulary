@@ -115,7 +115,7 @@ public class ListenAndWriteActivity extends AppCompatActivity implements TextToS
             public void run() {
                 finalMTts.speak(txtread.getText().toString(), TextToSpeech.QUEUE_FLUSH,null);
             }
-        }, 2000);
+        }, 1000);
 
 
     }
