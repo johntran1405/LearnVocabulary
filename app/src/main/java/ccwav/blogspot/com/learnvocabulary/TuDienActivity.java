@@ -166,7 +166,7 @@ public class TuDienActivity extends AppCompatActivity  implements TextToSpeech.O
             try
             {
                 CopyDataBaseFromAsset();
-                Toast.makeText(this, "Copying sucess from Assets folder", Toast.LENGTH_LONG).show();
+                
             }
             catch (Exception e)
             {
