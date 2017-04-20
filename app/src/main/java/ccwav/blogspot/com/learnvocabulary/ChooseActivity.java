@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -128,7 +127,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
         }
         else
         {
-            Toast.makeText(this, "Ban da tra loi sai!", Toast.LENGTH_LONG).show();
+            DialogEx.show(this,"Chú ý","Bạn Chọn sai rồi !!");
         }
         showQuestion();
     }

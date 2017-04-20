@@ -1,7 +1,6 @@
 package ccwav.blogspot.com.learnvocabulary;
 
 import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -66,6 +64,12 @@ public class ListenAndChooseActivity extends AppCompatActivity
 
     protected void showQuestion() {
         clearUI();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+        }, 1000);
         btnNext.setEnabled(listword.size() >= 4);
         if (listword.size() >= 4) {
             curentWords.clear();
@@ -137,7 +141,7 @@ public class ListenAndChooseActivity extends AppCompatActivity
                 }
             }
         } else {
-            Toast.makeText(this, "Ban da tra loi sai!", Toast.LENGTH_LONG).show();
+            DialogEx.show(this,"Chú ý","Bạn Chọn sai rồi !!");
         }
         showQuestion();
     }

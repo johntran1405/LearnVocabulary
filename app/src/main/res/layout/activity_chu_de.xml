@@ -107,6 +107,7 @@
             android:layout_height="wrap_content"
             android:text="kiểm tra"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/blue_button"/>
         <Button
             android:id="@+id/bt_tieptheo"
