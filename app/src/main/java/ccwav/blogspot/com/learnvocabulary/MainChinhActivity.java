@@ -51,9 +51,11 @@ public class MainChinhActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnInfo:
                 DialogEx.show(this,"Info","Thành viên nhóm : \n Tuyến Trần \n Việt Nguyễn \n Sang Võ \n Tú Tạ");
+                break;
             case R.id.btnTest:
                 Intent i3 = new Intent(MainChinhActivity.this, TestActivity.class);
                 startActivity(i3);
+                break;
             case R.id.btnthongtin:
 
         }
