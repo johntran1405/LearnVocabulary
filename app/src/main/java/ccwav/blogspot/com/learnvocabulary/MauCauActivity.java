@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
@@ -27,7 +30,7 @@ import ccwav.blogspot.com.learnvocabulary.Database.SQLiteContactController;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteDataController;
 import ccwav.blogspot.com.learnvocabulary.Model.maucaudbModel;
 
-public class MauCauActivity extends AppCompatActivity {
+public class MauCauActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
     final int currentDBVersion=2;
     final String DBVERSION_Key="DBVERSION_Key";
     ArrayList<maucaudbModel> listMauCau;
@@ -42,6 +45,7 @@ public class MauCauActivity extends AppCompatActivity {
     SimpleAdapter adapter;
     String txtRate;
     boolean checkdapan = false;
+    TextToSpeech finalMTts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,12 @@ public class MauCauActivity extends AppCompatActivity {
         String maucau = listMauCau.get(0).getSentence();
         txtmaucau.setText(maucau);
         dapan = listMauCau.get(0).getSentence();
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finalMTts.speak(txtmaucau.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+        }, 1000);
         adapter = new SimpleAdapter(this, listData, android.R.layout.simple_list_item_2,
                 new String[]{"text", "score"},
                 new int[]{android.R.id.text1, android.R.id.text2});
@@ -71,6 +80,7 @@ public class MauCauActivity extends AppCompatActivity {
         txtdapan = (TextView) findViewById(R.id.txtdapan);
         txtmaucau = (TextView) findViewById(R.id.txtmaucau);
         btmaucau = (Button) findViewById(R.id.btmaucau);
+        finalMTts = new TextToSpeech(this.getApplicationContext(), this);
     }
 
     private void createDB() {
@@ -162,8 +172,30 @@ public class MauCauActivity extends AppCompatActivity {
             String maucau = listMauCau.get(value).getSentence();
             txtmaucau.setText(maucau);
             dapan = listMauCau.get(value).getSentence();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finalMTts.speak(txtmaucau.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                }
+            }, 1000);
         } else {
             DialogEx.show(this, "Xin Chúc Mừng", "Bạn đã hoàn thành !!");
         }
+    }
+
+    @Override
+    public void onInit(int i) {
+        if (i != TextToSpeech.ERROR) {
+            finalMTts.setLanguage(Locale.US);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (finalMTts != null) {
+            finalMTts.stop();
+            finalMTts.shutdown();
+        }
+        super.onDestroy();
     }
 }

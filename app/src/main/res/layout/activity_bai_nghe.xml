@@ -22,10 +22,10 @@
         android:layout_height="wrap_content"
         android:text="Bài"
         android:textSize="20dp"/>
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sb_media" />
+    <!--<SeekBar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/sb_media" />-->
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -29,7 +32,7 @@ import ccwav.blogspot.com.learnvocabulary.Database.SQLiteContactController;
 import ccwav.blogspot.com.learnvocabulary.Database.SQLiteDataController;
 import ccwav.blogspot.com.learnvocabulary.Model.chudedbModel;
 
-public class ChuDeActivity extends AppCompatActivity {
+public class ChuDeActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
     final int currentDBVersion = 2;
     final String DBVERSION_Key = "DBVERSION_Key";
     ArrayList<chudedbModel> listChuDe;
@@ -50,6 +53,7 @@ public class ChuDeActivity extends AppCompatActivity {
     boolean check_added = false;
     String text_read;
     String t;
+    TextToSpeech finalMTts = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +77,6 @@ public class ChuDeActivity extends AppCompatActivity {
 
         String name = listChuDe.get(0).getName();
         txtname.setText(name);
-
         String a= listChuDe.get(0).getPicture1();
         cb_answer1.setText(a);
         String b= listChuDe.get(0).getPicture2();
@@ -119,6 +122,22 @@ public class ChuDeActivity extends AppCompatActivity {
         ThayDoiCheckBox();
         ThemListDapAnDung();
         ThucHienKiemTra();
+//        finalMTts = new TextToSpeech(this.getApplicationContext(), this);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                finalMTts.speak(listChuDe.get(0).getAnswertrue(), TextToSpeech.QUEUE_FLUSH, null);
+//            }
+//        }, 500);
+//        Button btnnghe;
+//        btnnghe= (Button) findViewById(R.id.buttonnghelai);
+//        btnnghe.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finalMTts.speak(listChuDe.get(0).getAnswertrue(), TextToSpeech.QUEUE_FLUSH, null);
+//            }
+//        });
+
     }
     private void ThucHienKiemTra() {
         bt_kiemtra.setOnClickListener(new View.OnClickListener() {
@@ -150,14 +169,18 @@ public class ChuDeActivity extends AppCompatActivity {
                     if(check_noi_dung){
                         if (check_chon_dung){
                             tv_ketqua.setText("Chọn đúng và phát âm đúng");
+                            tv_ketqua.setTextColor(Color.parseColor("#FF0000"));
                         }else {
                             tv_ketqua.setText("Chọn sai và phát âm đúng");
+                            tv_ketqua.setTextColor(Color.parseColor("#FF0000"));
                         }
                     }else {
                         if (check_chon_dung){
                             tv_ketqua.setText("Chọn đúng và phát âm sai");
+                            tv_ketqua.setTextColor(Color.parseColor("#FF0000"));
                         }else {
                             tv_ketqua.setText("Chọn sai và phát âm sai");
+                            tv_ketqua.setTextColor(Color.parseColor("#FF0000"));
                         }
                     }
                     bt_kiemtra.setEnabled(false);
@@ -420,4 +443,20 @@ public class ChuDeActivity extends AppCompatActivity {
         SQLiteContactController sql = new SQLiteContactController(this);
         return sql.getListChuDe();
     }
+
+    @Override
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR) {
+            finalMTts.setLanguage(Locale.US);
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        if (finalMTts != null) {
+            finalMTts.stop();
+            finalMTts.shutdown();
+        }
+        super.onDestroy();
+    }
+
 }

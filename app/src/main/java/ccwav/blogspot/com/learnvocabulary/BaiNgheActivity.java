@@ -133,7 +133,7 @@ public class BaiNgheActivity extends AppCompatActivity {
         bt_kiemtra = (Button) findViewById(R.id.bt_kiemtra);
         bt_tieptheo = (Button) findViewById(R.id.bt_tieptheo);
         bt_tieptheo.setEnabled(false);
-        sb_media = (SeekBar) findViewById(R.id.sb_media);
+        //sb_media = (SeekBar) findViewById(R.id.sb_media);
         btnPlay = (ImageButton) findViewById(R.id.imageButtonPlay);
         btnPause = (ImageButton) findViewById(R.id.imageButtonPause);
     }
@@ -204,13 +204,13 @@ public class BaiNgheActivity extends AppCompatActivity {
             mp = MediaPlayer.create(BaiNgheActivity.this, resourceId1);
 //            mp = MediaPlayer.create(BaiNgheActivity.this, R.raw.bai1);
             mp.start();
-            ChaySeekBar();
+           /* ChaySeekBar();
             mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     sb_media.setProgress(0);
                 }
-            });
+            });*/
         } catch (Exception e) {
         }
     }

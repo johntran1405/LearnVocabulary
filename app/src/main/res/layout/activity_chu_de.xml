@@ -81,14 +81,30 @@
         android:text="Mời bạn nhấn READ để phát âm"
         android:textSize="20sp"
         android:textColor="#FFFF0000"/>
-    <Button
-        android:id="@+id/btread"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSpeech"
-        android:text="Read"
-        android:background="@drawable/blue_button"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonnghelai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nghe Lại"
+            android:background="@drawable/blue_button"/>
+
+        <Button
+            android:id="@+id/btread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
+            android:onClick="onSpeech"
+            android:text="Read" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listView1"
@@ -96,26 +112,28 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btread"
         android:layout_below="@+id/btread"></ListView>
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/bt_kiemtra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="kiểm tra"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:text="Kiểm tra"
             android:background="@drawable/blue_button"/>
+
         <Button
             android:id="@+id/bt_tieptheo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
             android:onClick="nextBai"
-            android:text="tiếp theo"
-            android:background="@drawable/blue_button"/>
+            android:text="Tiếp theo" />
     </LinearLayout>
 
     <TextView
