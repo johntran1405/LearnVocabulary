@@ -29,7 +29,7 @@
                 android:layout_marginLeft="20px"
                 android:layout_marginRight="30px"
                 android:layout_marginTop="20px"
-                app:srcCompat="@drawable/abc_btn_borderless_material" />
+                />
         </LinearLayout>
 
         <LinearLayout
