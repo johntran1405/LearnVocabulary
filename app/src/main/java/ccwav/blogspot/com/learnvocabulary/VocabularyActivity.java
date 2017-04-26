@@ -112,7 +112,7 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
             public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            View swipeView = inflater.inflate(R.layout.custom_vocabulary_layout, container, false);
+            View swipeView = inflater.inflate(R.layout.vocabulary_layout, container, false);
             ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
             final TextView txtEN=(TextView) swipeView.findViewById(R.id.txtWord);
             final TextView txtSpeel=(TextView) swipeView.findViewById(R.id.txtSpell);
@@ -163,13 +163,13 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
             Log.d("DDDDDD",""+listword.get(position).getBookmark());
             if(listword.get(position).getBookmark()==1)
             {
-                bntFavorite.setBackgroundResource(R.drawable.bookmark1);
+                bntFavorite.setBackgroundResource(R.drawable.bookmark1_2);
                 bntFavorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         wordsSQLite.updatebBookmark(listword.get(position).getWordID(),0);
-                        bntFavorite.setBackgroundResource(R.drawable.bookmark3);
+                        bntFavorite.setBackgroundResource(R.drawable.bookmark1_1);
                     }
                 });
             }else {
@@ -177,7 +177,7 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onClick(View view) {
                             wordsSQLite.updatebBookmark(listword.get(position).getWordID(),1);
-                            bntFavorite.setBackgroundResource(R.drawable.bookmark1);
+                            bntFavorite.setBackgroundResource(R.drawable.bookmark1_2);
 
 
                     }

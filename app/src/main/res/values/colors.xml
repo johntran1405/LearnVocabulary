@@ -10,6 +10,7 @@
     <color name="colorEdittext">#7000</color>
     <color name="truebutton">#00FF00</color>
     <color name="falsebutton">#FF0000</color>
+    <color name ="textword">#9a9a9a</color>
 
     <color name="background">#F4FA58</color>
     <color name="tranferbutton">#1000</color>
