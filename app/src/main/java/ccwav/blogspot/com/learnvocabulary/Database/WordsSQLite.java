@@ -77,6 +77,25 @@ public class WordsSQLite extends MyDatabase {
 
         return listwords;
     }
+    public ArrayList<Words_Model> getWordsbyCategoriFavorite() {
+        ArrayList<Words_Model> listwords = new ArrayList<Words_Model>();
+        try {
+            openDataBase();
+            Cursor cs = database.rawQuery("select * from Word where Bookmark =" + 1, null);
+            Words_Model words_model;
+            while (cs.moveToNext()) {
+                words_model = new Words_Model(cs.getInt(0),cs.getInt(1),cs.getString(2), cs.getString(3),cs.getString(4), cs.getString(5), cs.getString(6),cs.getInt(7));
+                listwords.add(words_model);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
+
+        return listwords;
+    }
     public void updatebBookmark(int rowId,int giatri) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

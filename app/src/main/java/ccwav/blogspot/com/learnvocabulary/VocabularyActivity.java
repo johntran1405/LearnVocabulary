@@ -63,7 +63,13 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
         idcate=bundle.getInt("id");
         Log.d("IDCATE","id: "+idcate);
         wordsSQLite= new WordsSQLite(this);
-        listword=wordsSQLite.getAllWordsbyCategori(idcate);
+        if(idcate==9)
+        {
+            listword=wordsSQLite.getWordsbyCategoriFavorite();
+        }else {
+            listword=wordsSQLite.getAllWordsbyCategori(idcate);
+        }
+
         NUM_ITEMS=listword.size();
         Log.d("Array","arr: "+listword.size());
         addControl();
