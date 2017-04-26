@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import ccwav.blogspot.com.learnvocabulary.Common.DialogEx;
 import ccwav.blogspot.com.learnvocabulary.Database.MyDatabase;
 import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
 import ccwav.blogspot.com.learnvocabulary.Model.Categories_Model;
@@ -51,6 +50,7 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
     static List<Words_Model> listword= new ArrayList<>();
     static int NUM_ITEMS =0;
     int idW;
+    Words_Model words_model;
 
 
 
@@ -111,7 +111,7 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
             final TextView txtEN=(TextView) swipeView.findViewById(R.id.txtWord);
             final TextView txtSpeel=(TextView) swipeView.findViewById(R.id.txtSpell);
             Button btnSoundSpeak = (Button) swipeView.findViewById(R.id.btn_soundSpeak);
-            Button bntFavorite = (Button) swipeView.findViewById(R.id.btn_bookmark);
+            final Button bntFavorite = (Button) swipeView.findViewById(R.id.btn_bookmark);
             Button btnShowContext = (Button) swipeView.findViewById(R.id.btn_showContext);
 
             finalMTts= new TextToSpeech(this.getActivity(),this);
@@ -119,19 +119,6 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
             Bundle bundle = getArguments();
             final int position = bundle.getInt("position");
             final String imageFileName = listword.get(position).getImage();
-
-
-//            SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-//            editor.putInt("idWord", listword.get(position).getWordID());
-//            editor.commit();
-
-
-//            Bundle bun = new Bundle();
-//            bun.putInt("idWord", listword.get(position).getWordID());
-//            Intent intent = getActivity().getIntent();
-//            intent.putExtras(bun);
-            Log.d("Wid  ",""+listword.get(position).getWordID());
-
 
             txtEN.setText(listword.get(position).getEnglish());
             txtSpeel.setText(listword.get(position).getSpeech());
@@ -167,19 +154,30 @@ public class VocabularyActivity extends AppCompatActivity implements View.OnClic
                     dialog.cancel();
                 }
             });
+            Log.d("DDDDDD",""+listword.get(position).getBookmark());
+            if(listword.get(position).getBookmark()==1)
+            {
+                bntFavorite.setBackgroundResource(R.drawable.bookmark1);
+                bntFavorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-            bntFavorite.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try
-                    {
+                        wordsSQLite.updatebBookmark(listword.get(position).getWordID(),0);
+                        bntFavorite.setBackgroundResource(R.drawable.bookmark3);
                     }
-                    catch(Exception e)
-                    {
-                        System.out.println("Error: "+e.getLocalizedMessage());
+                });
+            }else {
+                bntFavorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                            wordsSQLite.updatebBookmark(listword.get(position).getWordID(),1);
+                            bntFavorite.setBackgroundResource(R.drawable.bookmark1);
+
+
                     }
-                }
-            });
+                });
+            }
+
 
 
             return swipeView;

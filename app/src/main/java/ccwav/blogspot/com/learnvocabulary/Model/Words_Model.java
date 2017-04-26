@@ -1,10 +1,13 @@
 package ccwav.blogspot.com.learnvocabulary.Model;
 
+import ccwav.blogspot.com.learnvocabulary.Database.WordsSQLite;
+
 /**
  * Created by John on 3/20/2017.
  */
 
 public class Words_Model {
+    private WordsSQLite wordsSQLite;
     private int wordID;
     private int Categories_ID;
     private String English;
@@ -12,6 +15,17 @@ public class Words_Model {
     private String Speech;
     private String Image;
     private String Context;
+    private int Bookmark;
+
+
+    public int getBookmark() {
+        return Bookmark;
+    }
+
+    public void setBookmark(int bookmark) {
+        Bookmark = bookmark;
+    }
+
 
     public Words_Model(Words_Model m1){
         this.wordID = m1.wordID;
@@ -23,7 +37,7 @@ public class Words_Model {
         this.Context = m1.Context;
     }
 
-    public Words_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context) {
+    public Words_Model(int wordID, int categories_ID, String english, String vietnamese, String speech, String image, String context, int bookmark) {
         this.wordID = wordID;
         Categories_ID = categories_ID;
         English = english;
@@ -31,6 +45,7 @@ public class Words_Model {
         Speech = speech;
         Image = image;
         Context = context;
+        Bookmark = bookmark;
     }
 
     public int getWordID() {
@@ -88,6 +103,8 @@ public class Words_Model {
     public void setContext(String context) {
         Context = context;
     }
+
+
 
 
 }
