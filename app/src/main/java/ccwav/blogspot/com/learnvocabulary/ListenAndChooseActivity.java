@@ -52,7 +52,7 @@ public class ListenAndChooseActivity extends AppCompatActivity
             public void run() {
                 finalMTts.speak(txtNewWord.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
-        }, 500);
+        }, 50);
 
     }
 
@@ -79,14 +79,14 @@ public class ListenAndChooseActivity extends AppCompatActivity
                 position = random.nextInt(listword.size());
 
                 //Search in current list
-                Boolean hasInCurrent = false; //  <-- biến này kiểm tra xem từ đó đã có trong mảng chưa
+                Boolean hasInCurrent = false;
                 for (int i = 0; i < curentWords.size(); i++) {
                     if (curentWords.get(i).getWordID() == listword.get(position).getWordID()) {
-                        hasInCurrent = true; // <-- kiểm tra đã có thì bật cái cờ lên và đi chỗ khác chơi
+                        hasInCurrent = true;
                         break;
                     }
                 }
-                if (!hasInCurrent) // vấn đề ở khúc này
+                if (!hasInCurrent)
                 {
                     curentWords.add(listword.get(position));
                 }

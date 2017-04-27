@@ -156,7 +156,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="textPersonName"
-                    android:text="Thông tin"
+                    android:text="Liên Kết"
                     android:textSize="25dp"
                     android:textStyle="normal|bold" />
             </LinearLayout>

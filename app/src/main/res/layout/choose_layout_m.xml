@@ -9,76 +9,93 @@
     android:orientation="vertical"
     tools:context="ccwav.blogspot.com.learnvocabulary.MainActivity">
 
-
-    <ImageView
-        android:id="@+id/imagecate"
-        android:layout_width="match_parent"
-        android:layout_height="342dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/fruit1" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="5dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imagecate"
             android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/dapan1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="tomato"
-                android:textColor="#111111"
-                android:background="@drawable/round_corner"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/dapan2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="apple"
-                android:textColor="#111111"
-                android:background="@drawable/round_corner"
-                android:textSize="20dp" />
-
-        </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1.4"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fruit1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
 
-            <Button
-                android:id="@+id/dapan3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textColor="#111111"
-                android:background="@drawable/round_corner"
-                android:text="banana"
-                android:textSize="20dp" />
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/dapan4"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textColor="#111111"
-                android:background="@drawable/round_corner"
-                android:text="strawberry"
-                android:textSize="20dp" />
+                android:layout_height="101dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dapan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_corner"
+                    android:text="tomato"
+                    android:textColor="#111111"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/dapan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_corner"
+                    android:text="apple"
+                    android:textColor="#111111"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="101dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dapan3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_corner"
+                    android:text="banana"
+                    android:textColor="#111111"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/dapan4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_corner"
+                    android:text="strawberry"
+                    android:textColor="#111111"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
 
     </LinearLayout>
+
 
 </LinearLayout>

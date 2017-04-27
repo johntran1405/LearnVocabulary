@@ -46,7 +46,7 @@ public class MainChinhActivity extends AppCompatActivity implements View.OnClick
                 startActivity(i);
                 break;
             case R.id.btnBaiHoc:
-                Intent i2 = new Intent(MainChinhActivity.this, Main.class);
+                Intent i2 = new Intent(getApplication(), Main.class);
                 startActivity(i2);
                 break;
             case R.id.btnInfo:
